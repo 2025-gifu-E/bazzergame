@@ -1,0 +1,14 @@
+# Godot-specific folders
+.import/
+.export/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Godot metadata
+.godot/
+
+# User-specific settings
+*.tmp
+*.log
