@@ -3,9 +3,12 @@ extends Control
 @onready var curtain_r: ColorRect = $curtain_R
 @onready var start_text: RichTextLabel = $start_text
 
+@onready var bgm: AudioStreamPlayer = $BGM
+
 var curtain_time:float = 0.5
 
 func _ready() -> void:
+	bgm.play()
 	start_text.show()
 	curtain_l.scale = Vector2(1,1)
 	curtain_r.scale = Vector2(1,1)

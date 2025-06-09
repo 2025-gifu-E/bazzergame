@@ -31,6 +31,7 @@ theme_override_constants/margin_bottom = 50
 
 [node name="GameImage" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 columns = 4
@@ -56,70 +57,8 @@ texture = ExtResource("4_xixsc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="GameName4" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="GameName5" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="GameName6" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="GameName7" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="GameName8" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="GameName9" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="GameName10" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="GameName11" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="GameName12" type="TextureRect" parent="MarginContainer/GameImage"]
-custom_minimum_size = Vector2(250, 139)
-layout_mode = 2
-texture = ExtResource("4_xixsc")
-expand_mode = 1
-stretch_mode = 4
-
 [node name="GameName" type="Label" parent="."]
+custom_minimum_size = Vector2(1052, 150)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -127,15 +66,17 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -526.0
-offset_top = -158.0
+offset_top = -180.0
 offset_right = 526.0
-offset_bottom = -53.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset = Vector2(526, 75)
 theme_override_font_sizes/font_size = 50
 text = "ゲーム名(texturerectの名前)が
 表示されるよ"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="cursor" type="TextureRect" parent="."]
 layout_mode = 1
