@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs810uext56dn"]
+[gd_scene load_steps=11 format=3 uid="uid://bs810uext56dn"]
 
 [ext_resource type="Script" uid="uid://bnty3l5v678px" path="res://TitleMenu/discription.gd" id="1_8yc65"]
 [ext_resource type="Texture2D" uid="uid://b652ynyb2gbr8" path="res://TitleMenu/sprites/ui2-a.png" id="1_etbcg"]
 [ext_resource type="Texture2D" uid="uid://cpn7ayruvuf41" path="res://TitleMenu/sprites/ui3-a.png" id="1_p3te6"]
+[ext_resource type="PackedScene" uid="uid://oows4t73rmft" path="res://TitleMenu/title.tscn" id="2_0c2fw"]
 [ext_resource type="Texture2D" uid="uid://c47mltxarecv" path="res://TitleMenu/sprites/校舎の写真.png" id="2_63sso"]
 [ext_resource type="Texture2D" uid="uid://ntqjmyhnb3c0" path="res://TitleMenu/sprites/ui1-b.png" id="2_wvwqj"]
 [ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="3_ta6wg"]
 [ext_resource type="Texture2D" uid="uid://odvoajrhkqpp" path="res://TitleMenu/sprites/ui3-b.png" id="3_y2jrb"]
 [ext_resource type="Texture2D" uid="uid://btks2syovcprw" path="res://TitleMenu/sprites/スクリーンショット 2024-10-26 112119.png" id="6_8yc65"]
+[ext_resource type="AudioStream" uid="uid://dep0uk4r57hh7" path="res://TitleMenu/Logic&Contradiction.ogg" id="10_g3p2w"]
 
 [node name="discription" type="Control"]
 layout_mode = 3
@@ -17,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8yc65")
+game_scene = ExtResource("2_0c2fw")
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(1, 0.815686, 0.458824, 1)
@@ -127,6 +130,7 @@ texture = ExtResource("3_ta6wg")
 stretch_mode = 4
 
 [node name="discription_background" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.733333)
 custom_minimum_size = Vector2(750, 500)
 layout_mode = 1
 anchors_preset = -1
@@ -176,6 +180,7 @@ theme_override_constants/separation = 10
 
 [node name="操作方法" type="Label" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
 text = "操作方法をここに！！！"
 
@@ -208,8 +213,11 @@ theme_override_font_sizes/font_size = 35
 text = "はじめる!"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 11.0
 one_shot = true
+
+[node name="discribe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_g3p2w")
+volume_db = -7.0
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_start_pressed"]

@@ -7,12 +7,16 @@ extends Control
 
 var curtain_time:float = 0.5
 
+#基本的にいじらなくても機能しますよ。
+#逆にいじるとセレクトがうまくいかなくなるよ
 func _ready() -> void:
 	bgm.play()
 	start_text.show()
 	curtain_l.scale = Vector2(1,1)
 	curtain_r.scale = Vector2(1,1)
 
+#基本的にいじらなくても機能しますよ。
+#逆にいじるとセレクトがうまくいかなくなるよ
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("enter"):
 		start_text.hide()
