@@ -56,7 +56,70 @@ texture = ExtResource("4_xixsc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="."]
+[node name="GameName4" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName5" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName6" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName7" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName8" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName9" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName10" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName11" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName12" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
