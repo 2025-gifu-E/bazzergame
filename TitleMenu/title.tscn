@@ -15,7 +15,7 @@ script = ExtResource("1_ow3jp")
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 580.0
+offset_right = 576.0
 grow_vertical = 2
 color = Color(1, 0, 0, 1)
 
@@ -25,7 +25,7 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -572.0
+offset_left = -576.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(572, 0)

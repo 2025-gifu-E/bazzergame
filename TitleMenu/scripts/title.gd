@@ -5,4 +5,5 @@ extends Control
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("enter"):
 		print("aaaaaa")
-		create_tween().tween_property(curtain_l,"scale",Vector2(0.15,1),0.3)
+		create_tween().tween_property(curtain_l,"scale",Vector2(0.15,1),0.3).set_ease(Tween.EASE_OUT)
+		create_tween().tween_property(curtain_r,"scale",Vector2(0.15,1),0.3).set_ease(Tween.EASE_OUT)
