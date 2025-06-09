@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://oows4t73rmft"]
 
 [ext_resource type="Script" uid="uid://ywa0kbgad6ok" path="res://TitleMenu/scripts/title.gd" id="1_ow3jp"]
-[ext_resource type="AudioStream" uid="uid://cxiwdl025je8l" path="res://TitleMenu/Q.ogg" id="2_1hvqe"]
+[ext_resource type="AudioStream" uid="uid://blxw5u0i6wqe3" path="res://TitleMenu/kosen2025_kouka.ogg" id="2_1hvqe"]
 
 [node name="title" type="Control"]
 layout_mode = 3
@@ -66,3 +66,4 @@ vertical_alignment = 1
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_1hvqe")
+volume_db = -7.0

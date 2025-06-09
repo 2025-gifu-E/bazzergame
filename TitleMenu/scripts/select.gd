@@ -38,14 +38,15 @@ func select_game() -> void:
 	var game_number:int = 0
 	var game_random:int = randi_range(0,game.size())
 
-	var roulette_minimum:int = game.size() * 2
+	var roulette_minimum:int = game.size() * 3
 
 	while game_random != 0 or roulette_minimum != 0:
 		if game_number == game.size()-1:
 			game_number = 0
 		else:
 			game_number += 1
-		roulette_minimum -= 1
+		if roulette_minimum > 0:
+			roulette_minimum -= 1
 		game_random = randi_range(0,game.size())
 		cursor.global_position = game[game_number].global_position + (game[game_number].get_rect().size / 2) + corsor_pos_offset
 		current_game_name = game[game_number].name
