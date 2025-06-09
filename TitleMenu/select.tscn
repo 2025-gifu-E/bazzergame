@@ -98,6 +98,7 @@ stretch_mode = 4
 modulate = Color(1, 0.843137, 0.278431, 1)
 z_index = -1
 texture_filter = 2
+custom_minimum_size = Vector2(1152, 0)
 layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 780.0
