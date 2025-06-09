@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://wha2hb0ver01"]
+[gd_scene load_steps=6 format=3 uid="uid://wha2hb0ver01"]
+
+[ext_resource type="Texture2D" uid="uid://btks2syovcprw" path="res://TitleMenu/スクリーンショット 2024-10-26 112119.png" id="1_md2l1"]
+[ext_resource type="Script" uid="uid://eku5lcufsakt" path="res://TitleMenu/scripts/select.gd" id="1_rnt1k"]
+[ext_resource type="Texture2D" uid="uid://cv0ecdf4o54mx" path="res://TitleMenu/スクリーンショット 2024-12-28 233605.png" id="3_ma1ct"]
+[ext_resource type="Texture2D" uid="uid://biuq1aat824is" path="res://TitleMenu/スクリーンショット (4).png" id="4_xixsc"]
+[ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/corsor.png" id="5_ma1ct"]
 
 [node name="select" type="Control"]
 layout_mode = 3
@@ -7,3 +13,75 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rnt1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="GameImage" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="おとすな！！" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("1_md2l1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName2" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("3_ma1ct")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GameName3" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("4_xixsc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -526.0
+offset_top = -158.0
+offset_right = 526.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "ゲーム名(texturerectの名前)が
+表示されるよ"
+horizontal_alignment = 1
+
+[node name="cursor" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.043
+anchor_bottom = 0.077
+offset_right = 0.463997
+offset_bottom = 0.103996
+rotation = -1.5708
+pivot_offset = Vector2(25, 25)
+texture = ExtResource("5_ma1ct")
+stretch_mode = 4
