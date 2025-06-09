@@ -1,11 +1,8 @@
 extends Control
+@onready var curtain_l: ColorRect = $curtain_L
+@onready var curtain_r: ColorRect = $curtain_R
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("enter"):
+		print("aaaaaa")
+		create_tween().tween_property(curtain_l,"scale",Vector2(0.15,1),0.3)
