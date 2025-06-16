@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd0c126hdcyil"]
+
+[ext_resource type="PackedScene" uid="uid://1pap03xjrf7g" path="res://MiniGame/rangea_lightsout/scean/button/button.tscn" id="1_auf0j"]
+
+[node name="lightsout_main" type="Node2D"]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+
+[node name="Button" parent="." instance=ExtResource("1_auf0j")]
