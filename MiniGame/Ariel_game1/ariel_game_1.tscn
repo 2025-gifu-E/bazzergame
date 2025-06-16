@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://dgyp5frqgt80u"]
+
+[ext_resource type="Script" uid="uid://csjp6d5q7v0f4" path="res://MiniGame/Ariel_game1/ariel_game_1.gd" id="1_aveta"]
+[ext_resource type="Texture2D" uid="uid://d2ef5c1gfxgix" path="res://icon.svg" id="1_o7bum"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aveta"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_d452c"]
+sky_material = SubResource("ProceduralSkyMaterial_aveta")
+
+[sub_resource type="Environment" id="Environment_y25qh"]
+background_mode = 2
+sky = SubResource("Sky_d452c")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o7bum"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aveta"]
+radius = 0.123
+
+[sub_resource type="SphereMesh" id="SphereMesh_d452c"]
+radius = 0.123
+height = 0.245
+
+[sub_resource type="Animation" id="Animation_aveta"]
+resource_name = "power_bar_value"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("power_bar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.0, 100.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_d452c"]
+resource_name = "rotation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotation_pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.872665, 0), Vector3(0, -0.872665, 0), Vector3(0, 0.872665, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y25qh"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y25qh"]
+_data = {
+&"RESET": SubResource("Animation_y25qh"),
+&"power_bar_value": SubResource("Animation_aveta"),
+&"rotation": SubResource("Animation_d452c")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aveta"]
+
+[sub_resource type="TextMesh" id="TextMesh_d452c"]
+material = SubResource("StandardMaterial3D_aveta")
+text = "↑"
+font_size = 100
+
+[node name="Ariel_game1" type="Node3D"]
+script = ExtResource("1_aveta")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y25qh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.0158)
+billboard = 1
+texture = ExtResource("1_o7bum")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_o7bum")
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_aveta")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_d452c")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 3)
+
+[node name="power_bar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(500, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 185.0
+offset_right = 250.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y25qh")
+}
+
+[node name="rotation_pivot" type="Node3D" parent="."]
+transform = Transform3D(0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0, 0, 0)
+
+[node name="arrow" type="MeshInstance3D" parent="rotation_pivot"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -0.04, 0, -1)
+mesh = SubResource("TextMesh_d452c")
