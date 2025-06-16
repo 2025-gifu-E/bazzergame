@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://djfbs1cd0l1be"]
 
 [ext_resource type="Script" uid="uid://bnty3l5v678px" path="res://TitleMenu/discription.gd" id="1_arne8"]
-[ext_resource type="PackedScene" uid="uid://oows4t73rmft" path="res://TitleMenu/title.tscn" id="2_l4ebg"]
+[ext_resource type="PackedScene" uid="uid://cd0c126hdcyil" path="res://MiniGame/rangea_lightsout/scean/lightsout_main/lightsout_main.tscn" id="2_arne8"]
 [ext_resource type="Texture2D" uid="uid://c47mltxarecv" path="res://TitleMenu/sprites/校舎の写真.png" id="3_xnaod"]
 [ext_resource type="Texture2D" uid="uid://b652ynyb2gbr8" path="res://TitleMenu/sprites/ui2-a.png" id="4_kjwrs"]
 [ext_resource type="Texture2D" uid="uid://ntqjmyhnb3c0" path="res://TitleMenu/sprites/ui1-b.png" id="5_e5hsa"]
 [ext_resource type="Texture2D" uid="uid://odvoajrhkqpp" path="res://TitleMenu/sprites/ui3-b.png" id="6_qh7sj"]
 [ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="7_rxg71"]
 [ext_resource type="Texture2D" uid="uid://cpn7ayruvuf41" path="res://TitleMenu/sprites/ui3-a.png" id="8_boqve"]
-[ext_resource type="Texture2D" uid="uid://btks2syovcprw" path="res://TitleMenu/sprites/スクリーンショット 2024-10-26 112119.png" id="9_kdsqd"]
+[ext_resource type="Texture2D" uid="uid://xxu8cdchd8qk" path="res://MiniGame/rangea_lightsout/assets/thumnail/スクリーンショット 2025-06-17 002322.png" id="9_arne8"]
 [ext_resource type="AudioStream" uid="uid://dep0uk4r57hh7" path="res://TitleMenu/Logic&Contradiction.ogg" id="10_rloqq"]
 
 [node name="discription" type="Control"]
@@ -19,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_arne8")
-game_scene = ExtResource("2_l4ebg")
+game_scene = ExtResource("2_arne8")
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(1, 0.815686, 0.458824, 1)
@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 10
 [node name="game_name" type="Label" parent="flavortext_background/MarginContainer/gamename_background/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "ライトアウト"
+text = "ライツアウト"
 horizontal_alignment = 1
 
 [node name="timer_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]
@@ -170,7 +170,7 @@ layout_mode = 2
 [node name="プレイ映像" type="TextureRect" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-texture = ExtResource("9_kdsqd")
+texture = ExtResource("9_arne8")
 expand_mode = 1
 stretch_mode = 4
 
@@ -179,11 +179,13 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="操作方法" type="Label" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(3, 3)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
-text = "ボタンを押すだけ!!!
-簡単!!!"
+text = "ボタンを選択してAで反転
+簡単だね"
+autowrap_mode = 1
 
 [node name="VSeparator" type="VSeparator" parent="discription_background/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -194,7 +196,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
-text = "ゲーム説明をここに！！！"
+text = "ライツアウトだよ。
+選択したボタンと周囲のボタン
+が反転して
+全部点灯させたらクリア"
 
 [node name="start" type="Button" parent="."]
 layout_mode = 1

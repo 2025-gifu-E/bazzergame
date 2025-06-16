@@ -15,5 +15,7 @@ func change_scene(game_name:String) -> void:
 				game_path = "res://TitleMenu/discription.tscn"
 			"GameName3":
 				game_path = "res://TitleMenu/discription.tscn"
+			"ライツアウト":
+				game_path = "res://MiniGame/rangea_lightsout/scean/discription/discription.tscn"
 
 	SceneManager.change_scene(game_path,{"color":Color("#000000"),"speed":2.0})
