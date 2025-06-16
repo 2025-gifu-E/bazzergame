@@ -1,0 +1,136 @@
+[gd_scene load_steps=16 format=3 uid="uid://c86xnlfnx7snq"]
+
+[ext_resource type="Script" uid="uid://cxtwpcplg803l" path="res://MiniGame/SORIO_Game1/Scene/game_1.gd" id="1_irdhl"]
+[ext_resource type="Texture2D" uid="uid://dl1kalm5dilmi" path="res://MiniGame/SORIO_Game1/Texture/kure-nn.png" id="1_vnhsg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_812pr"]
+size = Vector2(800, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lmsjk"]
+size = Vector3(80, 5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msp8a"]
+size = Vector2(50, 650)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ev2q"]
+size = Vector3(5, 65, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cl3tv"]
+size = Vector2(50, 650)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3rrad"]
+size = Vector3(5, 65, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeyrw"]
+size = Vector2(50, 300)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vnhsg"]
+size = Vector3(5, 30, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irdhl"]
+size = Vector2(100, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnhsg"]
+size = Vector2(50, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_irdhl"]
+size = Vector3(50, 10, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu7g2"]
+size = Vector2(10, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_majgu"]
+size = Vector3(10, 50, 1)
+
+[node name="Game1" type="Node2D"]
+script = ExtResource("1_irdhl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-100, 300)
+shape = SubResource("RectangleShape2D_812pr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D"]
+scale = Vector2(10, 10)
+mesh = SubResource("BoxMesh_lmsjk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-500, 0)
+shape = SubResource("RectangleShape2D_msp8a")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D2"]
+scale = Vector2(10, 10)
+mesh = SubResource("BoxMesh_8ev2q")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_cl3tv")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D3"]
+scale = Vector2(10, 10)
+mesh = SubResource("BoxMesh_3rrad")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(300, 175)
+shape = SubResource("RectangleShape2D_yeyrw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D4"]
+scale = Vector2(10, 10)
+mesh = SubResource("BoxMesh_vnhsg")
+
+[node name="UFO" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO"]
+position = Vector2(0, -250)
+shape = SubResource("RectangleShape2D_irdhl")
+
+[node name="Sprite2D" type="Sprite2D" parent="UFO/CollisionShape2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_vnhsg")
+
+[node name="left_arm" type="CharacterBody2D" parent="UFO/CollisionShape2D"]
+position = Vector2(-25, 10)
+rotation = -0.989602
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO/CollisionShape2D/left_arm"]
+z_index = -2
+position = Vector2(-30, 0)
+shape = SubResource("RectangleShape2D_vnhsg")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/left_arm/CollisionShape2D"]
+mesh = SubResource("BoxMesh_irdhl")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="UFO/CollisionShape2D/left_arm"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO/CollisionShape2D/left_arm/CharacterBody2D"]
+z_index = -2
+position = Vector2(-55, 20)
+shape = SubResource("RectangleShape2D_yu7g2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/left_arm/CharacterBody2D/CollisionShape2D"]
+mesh = SubResource("BoxMesh_majgu")
+
+[node name="right_arm" type="CharacterBody2D" parent="UFO/CollisionShape2D"]
+position = Vector2(25, 10)
+rotation = 0.401426
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO/CollisionShape2D/right_arm"]
+z_index = -2
+position = Vector2(30, 0)
+shape = SubResource("RectangleShape2D_vnhsg")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/right_arm/CollisionShape2D"]
+mesh = SubResource("BoxMesh_irdhl")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="UFO/CollisionShape2D/right_arm"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO/CollisionShape2D/right_arm/CharacterBody2D"]
+z_index = -2
+position = Vector2(55, 20)
+shape = SubResource("RectangleShape2D_yu7g2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/right_arm/CharacterBody2D/CollisionShape2D"]
+mesh = SubResource("BoxMesh_majgu")
