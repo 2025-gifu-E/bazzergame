@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://iwanun734xis" path="res://MiniGame/rangea_lightsout/scean/lightsout_main/lightsout_main.gd" id="1_auf0j"]
 
-[node name="lightsout_main" type="Node2D"]
-position = Vector2(150, 76)
+[node name="lightsout_main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 150.0
+offset_top = 76.0
+offset_right = 150.0
+offset_bottom = 76.0
 script = ExtResource("1_auf0j")
 
 [node name="GridContainer" type="GridContainer" parent="."]

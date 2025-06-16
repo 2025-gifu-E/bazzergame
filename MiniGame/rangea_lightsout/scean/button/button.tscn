@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://1pap03xjrf7g"]
+[gd_scene load_steps=5 format=3 uid="uid://1pap03xjrf7g"]
 
-[ext_resource type="Texture2D" uid="uid://bgfkdlnmkvj08" path="res://MiniGame/rangea_lightsout/assets/button/off_button.png" id="1_8mx5l"]
+[ext_resource type="Texture2D" uid="uid://byprgo82hv30q" path="res://MiniGame/rangea_lightsout/assets/button/off_button.png" id="1_8mx5l"]
+[ext_resource type="Texture2D" uid="uid://dlnwmshcuvx3" path="res://MiniGame/rangea_lightsout/assets/button/presd_button.png" id="2_bcohl"]
+[ext_resource type="Texture2D" uid="uid://bcp3n7qgkn670" path="res://MiniGame/rangea_lightsout/assets/button/hover_button.png" id="2_y43a1"]
+[ext_resource type="Texture2D" uid="uid://cgdi457k6tg18" path="res://MiniGame/rangea_lightsout/assets/button/off_presd_button.png" id="4_sgcfl"]
 
 [node name="TextureButton" type="TextureButton"]
 offset_right = 40.0
 offset_bottom = 40.0
 texture_normal = ExtResource("1_8mx5l")
+texture_pressed = ExtResource("2_bcohl")
+texture_hover = ExtResource("2_y43a1")
+texture_focused = ExtResource("4_sgcfl")
