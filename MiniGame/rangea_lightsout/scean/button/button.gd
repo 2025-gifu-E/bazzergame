@@ -7,14 +7,14 @@ extends TextureButton
 
 var grid_x: int
 var grid_y: int
+var press: bool
 
-func _ready():
-	update_texture()
 
-func toggle_pressed():
-	button_pressed = !button_pressed
-	update_texture()
-
-func update_texture():
-	texture_normal = tex_on if button_pressed else tex_off
-	texture_focused = tex_on_hover if button_pressed else tex_off_hover
+func update_texture(is_on: bool):
+	press = is_on
+	if press:
+		texture_normal = tex_on
+		texture_focused = tex_on_hover
+	else:
+		texture_normal = tex_off
+		texture_focused = tex_off_hover

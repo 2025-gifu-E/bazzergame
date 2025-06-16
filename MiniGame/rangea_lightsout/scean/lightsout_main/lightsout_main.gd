@@ -1,44 +1,66 @@
 extends Control
 
-const GRID_SIZE = 3
+@export var GRID_SIZE :int= 3
+@export var random :int = 5
+var grid_state := []              # 二次元配列 (bool)
+var grid_buttons := []            # 二次元配列 (TextureButton)
+
 @onready var grid_container = $GridContainer
-var grid = []
-var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")  # プレハブボタン
+var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")
 
 func _ready():
 	grid_container.columns = GRID_SIZE
 	for y in range(GRID_SIZE):
-		grid.append([])
+		var row_state = []
+		var row_buttons = []
 		for x in range(GRID_SIZE):
+			row_state.append(false)  # 全部オフ
 			var btn = ButtonScene.instantiate()
-			btn.toggle_mode = true
-			btn.custom_minimum_size = Vector2(64, 64)
+			btn.grid_x = x
+			btn.grid_y = y
+			btn.focus_mode = Control.FOCUS_ALL
 			btn.pressed.connect(_on_button_pressed.bind(x, y))
 			grid_container.add_child(btn)
-			grid[y].append(btn)
-			btn.focus_mode = Control.FOCUS_ALL  # ← 忘れずに！
-			
-			if x == 0 and y == 0:
-				btn.grab_focus()
+			row_buttons.append(btn)
+		grid_state.append(row_state)
+		grid_buttons.append(row_buttons)
+	randomize_grid_state(random)
+	update_all_buttons()
+	grid_buttons[0][0].grab_focus()
+func _on_button_pressed(x: int, y: int):
+	toggle(x, y)
+	toggle(x - 1, y)
+	toggle(x + 1, y)
+	toggle(x, y - 1)
+	toggle(x, y + 1)
+	update_all_buttons()
+	check_clear()
 
-func _on_button_pressed(x: int, y: int) -> void:
-	#_toggle(x, y)           # 押されたボタン自身
-	_toggle(x - 1, y)
-	_toggle(x + 1, y)
-	_toggle(x, y - 1)
-	_toggle(x, y + 1)
-
-	if _check_cleared():
-		print("クリア！")
-
-func _toggle(x: int, y: int) -> void:
+func toggle(x: int, y: int):
 	if x >= 0 and x < GRID_SIZE and y >= 0 and y < GRID_SIZE:
-		var btn = grid[y][x]
-		btn.toggle_pressed()
+		grid_state[y][x] = !grid_state[y][x]
 
-func _check_cleared() -> bool:
-	for row in grid:
-		for btn in row:
-			if btn.button_pressed:
-				return false
-	return true
+func update_all_buttons():
+	for y in range(GRID_SIZE):
+		for x in range(GRID_SIZE):
+			grid_buttons[y][x].update_texture(grid_state[y][x])
+func check_clear():
+	for row in grid_state:
+		if row.has(false):
+			return
+	print("ゲームクリア！")
+
+func randomize_grid_state(count := 10):
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+
+	var positions = []
+	for y in range(GRID_SIZE):
+		for x in range(GRID_SIZE):
+			positions.append(Vector2i(x, y))
+
+	positions.shuffle()
+
+	for i in range(min(count, positions.size())):
+		var pos = positions[i]
+		grid_state[pos.y][pos.x] = true
