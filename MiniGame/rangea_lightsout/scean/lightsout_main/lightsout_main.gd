@@ -16,9 +16,13 @@ func _ready():
 			btn.pressed.connect(_on_button_pressed.bind(x, y))
 			grid_container.add_child(btn)
 			grid[y].append(btn)
+			btn.focus_mode = Control.FOCUS_ALL  # ← 忘れずに！
+			
+			if x == 0 and y == 0:
+				btn.grab_focus()
 
 func _on_button_pressed(x: int, y: int) -> void:
-	_toggle(x, y)           # 押されたボタン自身
+	#_toggle(x, y)           # 押されたボタン自身
 	_toggle(x - 1, y)
 	_toggle(x + 1, y)
 	_toggle(x, y - 1)
