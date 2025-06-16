@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgyp5frqgt80u"]
+[gd_scene load_steps=18 format=3 uid="uid://dgyp5frqgt80u"]
 
 [ext_resource type="Script" uid="uid://csjp6d5q7v0f4" path="res://MiniGame/Ariel_game1/ariel_game_1.gd" id="1_aveta"]
 [ext_resource type="Texture2D" uid="uid://d2ef5c1gfxgix" path="res://icon.svg" id="1_o7bum"]
@@ -41,8 +41,23 @@ tracks/0/keys = {
 "values": [0.0, 100.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_d452c"]
-resource_name = "rotation"
+[sub_resource type="Animation" id="Animation_y25qh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotation_pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.872665, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c6d0v"]
+resource_name = "rotation2"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,17 +69,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.872665, 0), Vector3(0, -0.872665, 0), Vector3(0, 0.872665, 0)]
+"values": [Vector3(1.0472, 0, 0), Vector3(0, 0, 0), Vector3(1.0472, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_y25qh"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_d452c"]
+resource_name = "rotation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotation_pivot2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.872665, 0), Vector3(0, -0.872665, 0), Vector3(0, 0.872665, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y25qh"]
 _data = {
 &"RESET": SubResource("Animation_y25qh"),
 &"power_bar_value": SubResource("Animation_aveta"),
-&"rotation": SubResource("Animation_d452c")
+&"rotation": SubResource("Animation_c6d0v"),
+&"rotation2": SubResource("Animation_d452c")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aveta"]
@@ -73,6 +102,10 @@ _data = {
 material = SubResource("StandardMaterial3D_aveta")
 text = "↑"
 font_size = 100
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aveta"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d452c"]
 
 [node name="Ariel_game1" type="Node3D"]
 script = ExtResource("1_aveta")
@@ -91,7 +124,6 @@ texture = ExtResource("1_o7bum")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_o7bum")
-freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("SphereShape3D_aveta")
@@ -122,8 +154,24 @@ libraries = {
 }
 
 [node name="rotation_pivot" type="Node3D" parent="."]
-transform = Transform3D(0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0.3, 0)
 
 [node name="arrow" type="MeshInstance3D" parent="rotation_pivot"]
+transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 0.04, 0, -0.5)
+mesh = SubResource("TextMesh_d452c")
+
+[node name="rotation_pivot2" type="Node3D" parent="."]
+transform = Transform3D(0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 0, 0, 0)
+
+[node name="arrow2" type="MeshInstance3D" parent="rotation_pivot2"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -0.04, 0, -1)
 mesh = SubResource("TextMesh_d452c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_aveta")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_d452c")
