@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c86xnlfnx7snq"]
+[gd_scene load_steps=25 format=3 uid="uid://c86xnlfnx7snq"]
 
 [ext_resource type="Script" uid="uid://cxtwpcplg803l" path="res://MiniGame/SORIO_Game1/Scene/game_1.gd" id="1_irdhl"]
 [ext_resource type="Texture2D" uid="uid://dl1kalm5dilmi" path="res://MiniGame/SORIO_Game1/Texture/kure-nn.png" id="1_vnhsg"]
@@ -60,6 +60,12 @@ size = Vector3(70, 70, 1)
 size = Vector2(70, 70)
 
 [sub_resource type="BoxMesh" id="BoxMesh_e0k23"]
+size = Vector3(70, 70, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ee0e"]
+size = Vector2(70, 70)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t28mm"]
 size = Vector3(70, 70, 1)
 
 [node name="Game1" type="Node2D"]
@@ -167,18 +173,41 @@ shape = SubResource("RectangleShape2D_27dxc")
 self_modulate = Color(0, 0.647059, 1, 1)
 mesh = SubResource("BoxMesh_yu7g2")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2(0, 240)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_irdhl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D2"]
 position = Vector2(150, 0)
 shape = SubResource("RectangleShape2D_majgu")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D/CollisionShape2D2"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D2/CollisionShape2D2"]
 self_modulate = Color(1, 0.376655, 0.367215, 1)
 mesh = SubResource("BoxMesh_0ee0e")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(0, 240)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_irdhl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D3"]
 position = Vector2(-150, 0)
 shape = SubResource("RectangleShape2D_t28mm")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D/CollisionShape2D3"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D3/CollisionShape2D3"]
 self_modulate = Color(1.2514e-06, 0.726828, 0.506479, 1)
 mesh = SubResource("BoxMesh_e0k23")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2(0, 240)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_irdhl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D4"]
+position = Vector2(-300, 0)
+shape = SubResource("RectangleShape2D_0ee0e")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D4/CollisionShape2D4"]
+self_modulate = Color(1, 0.737255, 0, 1)
+mesh = SubResource("BoxMesh_t28mm")
