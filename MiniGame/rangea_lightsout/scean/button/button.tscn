@@ -1,5 +1,8 @@
-[gd_scene format=3 uid="uid://1pap03xjrf7g"]
+[gd_scene load_steps=2 format=3 uid="uid://1pap03xjrf7g"]
 
-[node name="Button" type="Button"]
-offset_right = 172.0
-offset_bottom = 187.0
+[ext_resource type="Texture2D" uid="uid://bgfkdlnmkvj08" path="res://MiniGame/rangea_lightsout/assets/button/off_button.png" id="1_8mx5l"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_8mx5l")
