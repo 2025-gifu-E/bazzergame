@@ -7,7 +7,7 @@ extends Node2D
 
 
 
-const arm_max_angle:float = -45
+const arm_max_angle:float = -35
 const arm_min_angle:float = -10
 var Crane_Pos:Vector2
 var Mover:float = 20
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 				GameFlow = Crane.Down
 		
 		Crane.Down:
-			if(Crane_Pos.y >= 400):
+			if(Crane_Pos.y >= 420):
 				await get_tree().create_timer(0.5).timeout
 				GameFlow = Crane.Close
 			else:
