@@ -48,6 +48,9 @@ func check_clear():
 		if row.has(false):
 			return
 	print("ゲームクリア！")
+	$clearoverlay.visible = true
+	$clearoverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
+	$clearoverlay.create_tween().tween_property($clearoverlay, "modulate:a", 1, 1.0)
 
 func randomize_grid_state(count := 10):
 	var rng = RandomNumberGenerator.new()
