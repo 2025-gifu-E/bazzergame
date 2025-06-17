@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://c86xnlfnx7snq"]
+[gd_scene load_steps=27 format=3 uid="uid://c86xnlfnx7snq"]
 
 [ext_resource type="Script" uid="uid://cxtwpcplg803l" path="res://MiniGame/SORIO_Game1/Scene/game_1.gd" id="1_irdhl"]
 [ext_resource type="Texture2D" uid="uid://dl1kalm5dilmi" path="res://MiniGame/SORIO_Game1/Texture/kure-nn.png" id="1_vnhsg"]
+[ext_resource type="Texture2D" uid="uid://b36coewt1vsjg" path="res://MiniGame/SORIO_Game1/Texture/bg_abstract1_blue.png" id="3_27dxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812pr"]
 size = Vector2(800, 50)
@@ -42,13 +43,10 @@ size = Vector2(10, 50)
 [sub_resource type="BoxMesh" id="BoxMesh_majgu"]
 size = Vector3(10, 50, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_27dxc"]
+size = Vector3(20, 1000, 1)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_irdhl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_27dxc"]
-size = Vector2(70, 70)
-
-[sub_resource type="BoxMesh" id="BoxMesh_yu7g2"]
-size = Vector3(70, 70, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_majgu"]
 size = Vector2(70, 70)
@@ -66,6 +64,12 @@ size = Vector3(70, 70, 1)
 size = Vector2(70, 70)
 
 [sub_resource type="BoxMesh" id="BoxMesh_t28mm"]
+size = Vector3(70, 70, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27dxc"]
+size = Vector2(70, 70)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yu7g2"]
 size = Vector3(70, 70, 1)
 
 [node name="Game1" type="Node2D"]
@@ -161,17 +165,9 @@ shape = SubResource("RectangleShape2D_yu7g2")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/right_arm/CharacterBody2D/CollisionShape2D"]
 mesh = SubResource("BoxMesh_majgu")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(0, 240)
-mass = 0.001
-physics_material_override = SubResource("PhysicsMaterial_irdhl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("RectangleShape2D_27dxc")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D/CollisionShape2D"]
-self_modulate = Color(0, 0.647059, 1, 1)
-mesh = SubResource("BoxMesh_yu7g2")
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D"]
+position = Vector2(0, -520)
+mesh = SubResource("BoxMesh_27dxc")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 position = Vector2(0, 240)
@@ -211,3 +207,39 @@ shape = SubResource("RectangleShape2D_0ee0e")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D4/CollisionShape2D4"]
 self_modulate = Color(1, 0.737255, 0, 1)
 mesh = SubResource("BoxMesh_t28mm")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="."]
+position = Vector2(0, 240)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_irdhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
+shape = SubResource("RectangleShape2D_27dxc")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D5/CollisionShape2D"]
+self_modulate = Color(0, 0.647059, 1, 1)
+mesh = SubResource("BoxMesh_yu7g2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+self_modulate = Color(1, 1, 1, 0.470588)
+z_index = -15
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -595.0
+offset_top = -346.0
+offset_right = 559.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_27dxc")
+expand_mode = 1
