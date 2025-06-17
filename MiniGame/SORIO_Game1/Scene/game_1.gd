@@ -8,7 +8,7 @@ extends Node2D
 
 
 const arm_max_angle:float = -45
-const arm_min_angle:float = -30
+const arm_min_angle:float = -10
 var Crane_Pos:Vector2
 var Mover:float = 20
 
@@ -35,25 +35,31 @@ func _physics_process(delta: float) -> void:
 				GameFlow = Crane.Down
 		
 		Crane.Down:
-			Crane_Pos.y += 5
 			if(Crane_Pos.y >= 400):
+				await get_tree().create_timer(0.5).timeout
 				GameFlow = Crane.Close
+			else:
+				Crane_Pos.y += 5
 		
 		Crane.Close:
-			create_tween().tween_property(left_arm,"rotation_degrees",arm_max_angle,0.4)
-			create_tween().tween_property(right_arm,"rotation_degrees",arm_max_angle * -1,0.4)
+			create_tween().tween_property(left_arm,"rotation_degrees",arm_max_angle,0.2)
+			create_tween().tween_property(right_arm,"rotation_degrees",arm_max_angle * -1,0.2)
 			await get_tree().create_timer(1).timeout
 			GameFlow = Crane.Up
 		
 		Crane.Up:
-			Crane_Pos.y -= 5
 			if(Crane_Pos.y <= 0):
+				await get_tree().create_timer(0.5).timeout
 				GameFlow = Crane.Go
+			else:
+				Crane_Pos.y -= 5
 		
 		Crane.Go:
-			Crane_Pos.x += 5
 			if(Crane_Pos.x >= 400):
+				await get_tree().create_timer(0.5).timeout
 				GameFlow = Crane.Open
+			else:
+				Crane_Pos.x += 5
 		
 		Crane.Open:
 			create_tween().tween_property(left_arm,"rotation_degrees",arm_min_angle,0.4)
