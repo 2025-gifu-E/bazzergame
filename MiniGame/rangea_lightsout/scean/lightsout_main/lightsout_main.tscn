@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd0c126hdcyil"]
+[gd_scene load_steps=3 format=3 uid="uid://cd0c126hdcyil"]
 
 [ext_resource type="Script" uid="uid://iwanun734xis" path="res://MiniGame/rangea_lightsout/scean/lightsout_main/lightsout_main.gd" id="1_auf0j"]
+[ext_resource type="Texture2D" uid="uid://c47mltxarecv" path="res://TitleMenu/sprites/校舎の写真.png" id="2_wlfer"]
 
 [node name="lightsout_main" type="Control"]
 layout_mode = 3
@@ -10,6 +11,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_auf0j")
+
+[node name="background" type="TextureRect" parent="."]
+modulate = Color(1, 0.815686, 0.458824, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -598.5
+offset_top = -449.0
+offset_right = 598.5
+offset_bottom = 449.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wlfer")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

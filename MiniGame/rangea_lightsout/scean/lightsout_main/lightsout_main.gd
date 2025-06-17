@@ -48,9 +48,14 @@ func check_clear():
 		if row.has(false):
 			return
 	print("ゲームクリア！")
+	release_focus()
 	$clearoverlay.visible = true
 	$clearoverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
 	$clearoverlay.create_tween().tween_property($clearoverlay, "modulate:a", 1, 1.0)
+	
+	# 数秒後にシーン切り替え
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_file("res://TitleMenu/select.tscn")
 
 func randomize_grid_state(count := 10):
 	var rng = RandomNumberGenerator.new()
