@@ -122,6 +122,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.0158)
 billboard = 1
 texture = ExtResource("1_o7bum")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 3)
+
 [node name="ball" type="RigidBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_o7bum")
 
@@ -130,9 +133,6 @@ shape = SubResource("SphereShape3D_aveta")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ball"]
 mesh = SubResource("SphereMesh_d452c")
-
-[node name="Camera3D" type="Camera3D" parent="ball"]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 3)
 
 [node name="power_bar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(500, 50)

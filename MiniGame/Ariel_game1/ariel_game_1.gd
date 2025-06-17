@@ -75,7 +75,7 @@ func _process(delta: float) -> void:
 				# 力を適用
 				# power の値に、適切な乗数を掛けて調整する必要があるかもしれません
 				# 例: power_multiplier = 100 
-				var shoot_force: float = power * 100.0 # power の値を適切な係数で調整
+				var shoot_force: float = power * 0.1 # power の値を適切な係数で調整
 				
 				# ball の RigidBody3D モードをアクティブにする
 				ball.set_sleeping(false) # もしスリープ状態なら起こす
