@@ -7,7 +7,7 @@ extends Node2D
 
 
 
-const arm_max_angle:float = -35
+const arm_max_angle:float = -40
 const arm_min_angle:float = -10
 var Crane_Pos:Vector2
 var Mover:float = 20
