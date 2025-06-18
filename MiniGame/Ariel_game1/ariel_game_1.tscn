@@ -53,7 +53,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(-2, -2, -2),
 "update": 0,
-"values": [0.0, 100.0, 0.0]
+"values": [50.0, 100.0, 50.0]
 }
 
 [sub_resource type="Animation" id="Animation_c6d0v"]
@@ -147,6 +147,8 @@ offset_right = 250.0
 offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
+min_value = 50.0
+value = 50.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
