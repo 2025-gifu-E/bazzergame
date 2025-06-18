@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgyp5frqgt80u"]
+[gd_scene load_steps=21 format=3 uid="uid://dgyp5frqgt80u"]
 
 [ext_resource type="Script" uid="uid://csjp6d5q7v0f4" path="res://MiniGame/Ariel_game1/ariel_game_1.gd" id="1_aveta"]
-[ext_resource type="Texture2D" uid="uid://d2ef5c1gfxgix" path="res://icon.svg" id="1_o7bum"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_y25qh"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_c6d0v"]
+[ext_resource type="PackedScene" uid="uid://dsii8id16li2d" path="res://MiniGame/Ariel_game1/goal.tscn" id="4_y25qh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aveta"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -15,7 +15,7 @@ sky_material = SubResource("ProceduralSkyMaterial_aveta")
 [sub_resource type="Environment" id="Environment_y25qh"]
 background_mode = 2
 sky = SubResource("Sky_d452c")
-tonemap_mode = 2
+tonemap_mode = 3
 glow_enabled = true
 
 [sub_resource type="Resource" id="Resource_i7tfx"]
@@ -32,6 +32,15 @@ radius = 0.123
 [sub_resource type="SphereMesh" id="SphereMesh_d452c"]
 radius = 0.123
 height = 0.245
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aveta"]
+
+[sub_resource type="TextMesh" id="TextMesh_d452c"]
+material = SubResource("StandardMaterial3D_aveta")
+text = "↑"
+font_size = 100
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aveta"]
 
 [sub_resource type="Animation" id="Animation_y25qh"]
 length = 0.001
@@ -77,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(1.0472, 0, 0), Vector3(0, 0, 0), Vector3(1.0472, 0, 0)]
+"values": [Vector3(0.872665, 0, 0), Vector3(0, 0, 0), Vector3(1.0472, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_d452c"]
@@ -93,7 +102,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.0472, 0), Vector3(0, -1.0472, 0), Vector3(0, 1.0472, 0)]
+"values": [Vector3(0, 1.309, 0), Vector3(0, -1.309, 0), Vector3(0, 1.309, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y25qh"]
@@ -104,14 +113,9 @@ _data = {
 &"rotation2": SubResource("Animation_d452c")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aveta"]
-
-[sub_resource type="TextMesh" id="TextMesh_d452c"]
-material = SubResource("StandardMaterial3D_aveta")
-text = "↑"
-font_size = 100
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aveta"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_y25qh"]
+top_radius = 7.5
+bottom_radius = 7.5
 
 [node name="Ariel_game1" type="Node3D"]
 script = ExtResource("1_aveta")
@@ -123,23 +127,22 @@ environment = SubResource("Environment_y25qh")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.0158)
-billboard = 1
-texture = ExtResource("1_o7bum")
-
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 3)
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2.5, 4)
 
-[node name="phantom1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2, 3)
+[node name="phantom1" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(1, 0, 0, 0, 0.847998, 0.529999, 0, -0.529999, 0.847998, 0, 2.5, 4)
 script = ExtResource("3_y25qh")
+look_at_mode = 2
+look_at_target = NodePath("../ball")
 tween_resource = SubResource("Resource_i7tfx")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="phantom2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 4, 3)
+[node name="phantom2" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0.8, 0, -0.8, 0.6, 0, 4, 3)
 script = ExtResource("3_y25qh")
+look_at_mode = 2
+look_at_target = NodePath("../ball")
 tween_resource = SubResource("Resource_i7tfx")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
@@ -168,11 +171,6 @@ grow_vertical = 2
 min_value = 50.0
 value = 50.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_y25qh")
-}
-
 [node name="rotation_pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.642787, -0.766045, 0, 0.766045, 0.642787, 0, 0.3, 0)
 
@@ -181,7 +179,7 @@ transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 0.04, 
 mesh = SubResource("TextMesh_d452c")
 
 [node name="rotation_pivot2" type="Node3D" parent="."]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.258819, 0, 0.965925, 0, 1, 0, -0.965925, 0, 0.258819, 0, 0, 0)
 
 [node name="arrow2" type="MeshInstance3D" parent="rotation_pivot2"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -0.04, 0, -1)
@@ -192,3 +190,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_aveta")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y25qh")
+}
+
+[node name="goal" parent="." instance=ExtResource("4_y25qh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.82802)
+
+[node name="goal2" parent="." instance=ExtResource("4_y25qh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76188, 0, -4.29548)
+
+[node name="goal3" parent="." instance=ExtResource("4_y25qh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.647, -4.295)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+visible = false
+mesh = SubResource("CylinderMesh_y25qh")
+
+[connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]
+[connection signal="body_entered" from="goal2" to="." method="_on_goal_body_entered"]
+[connection signal="body_entered" from="goal3" to="." method="_on_goal_body_entered"]
