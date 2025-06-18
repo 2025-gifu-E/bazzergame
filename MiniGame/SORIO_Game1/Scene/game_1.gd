@@ -9,8 +9,10 @@ extends Node2D
 
 const arm_max_angle:float = -40
 const arm_min_angle:float = -10
+const Hit:int = 25
 var Crane_Pos:Vector2
 var Mover:float = 20
+var Random:int
 
 enum Crane {
 	Move,Down,Close,Up,Go,Open,End
@@ -49,12 +51,15 @@ func _physics_process(delta: float) -> void:
 		
 		Crane.Up:
 			if(Crane_Pos.y <= 0):
-				await get_tree().create_timer(0.5).timeout
+				Random = randi_range(1,100)
 				GameFlow = Crane.Go
 			else:
 				Crane_Pos.y -= 5
 		
 		Crane.Go:
+			if(Random>Hit):
+				left_arm.rotation_degrees = (arm_max_angle +1)
+				right_arm.rotation_degrees = (arm_max_angle +1) * -1
 			if(Crane_Pos.x >= 400):
 				await get_tree().create_timer(0.5).timeout
 				GameFlow = Crane.Open

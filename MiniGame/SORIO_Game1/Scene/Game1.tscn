@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c86xnlfnx7snq"]
+[gd_scene load_steps=25 format=3 uid="uid://c86xnlfnx7snq"]
 
 [ext_resource type="Script" uid="uid://cxtwpcplg803l" path="res://MiniGame/SORIO_Game1/Scene/game_1.gd" id="1_irdhl"]
 [ext_resource type="Texture2D" uid="uid://dl1kalm5dilmi" path="res://MiniGame/SORIO_Game1/Texture/kure-nn.png" id="1_vnhsg"]
@@ -47,12 +47,6 @@ size = Vector3(10, 50, 1)
 size = Vector3(20, 1000, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_irdhl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_majgu"]
-size = Vector2(70, 70)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0ee0e"]
-size = Vector3(70, 70, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t28mm"]
 size = Vector2(70, 70)
@@ -168,19 +162,6 @@ mesh = SubResource("BoxMesh_majgu")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D"]
 position = Vector2(0, -520)
 mesh = SubResource("BoxMesh_27dxc")
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
-position = Vector2(0, 240)
-mass = 0.001
-physics_material_override = SubResource("PhysicsMaterial_irdhl")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D2"]
-position = Vector2(150, 0)
-shape = SubResource("RectangleShape2D_majgu")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D2/CollisionShape2D2"]
-self_modulate = Color(1, 0.376655, 0.367215, 1)
-mesh = SubResource("BoxMesh_0ee0e")
 
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
 position = Vector2(0, 240)
