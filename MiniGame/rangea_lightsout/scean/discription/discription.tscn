@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://odvoajrhkqpp" path="res://TitleMenu/sprites/ui3-b.png" id="6_qh7sj"]
 [ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="7_rxg71"]
 [ext_resource type="Texture2D" uid="uid://cpn7ayruvuf41" path="res://TitleMenu/sprites/ui3-a.png" id="8_boqve"]
-[ext_resource type="Texture2D" uid="uid://xxu8cdchd8qk" path="res://MiniGame/rangea_lightsout/assets/thumnail/スクリーンショット 2025-06-17 002322.png" id="9_arne8"]
+[ext_resource type="Texture2D" uid="uid://c8gratyea5f4o" path="res://MiniGame/rangea_lightsout/assets/thumnail/スクリーンショット 2025-06-18 231433.png" id="9_arne8"]
 [ext_resource type="AudioStream" uid="uid://dep0uk4r57hh7" path="res://TitleMenu/Logic&Contradiction.ogg" id="10_rloqq"]
 
 [node name="discription" type="Control"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cv0ecdf4o54mx" path="res://TitleMenu/sprites/スクリーンショット 2024-12-28 233605.png" id="3_ma1ct"]
 [ext_resource type="Texture2D" uid="uid://biuq1aat824is" path="res://TitleMenu/sprites/スクリーンショット (4).png" id="4_xixsc"]
 [ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="5_ma1ct"]
-[ext_resource type="Texture2D" uid="uid://xxu8cdchd8qk" path="res://MiniGame/rangea_lightsout/assets/thumnail/スクリーンショット 2025-06-17 002322.png" id="5_ubi57"]
+[ext_resource type="Texture2D" uid="uid://c8gratyea5f4o" path="res://MiniGame/rangea_lightsout/assets/thumnail/スクリーンショット 2025-06-18 231433.png" id="5_ubi57"]
 [ext_resource type="Texture2D" uid="uid://bvm8k2fndd048" path="res://TitleMenu/sprites/高専.JPG" id="6_xixsc"]
 [ext_resource type="AudioStream" uid="uid://b5nhgdnfyod1d" path="res://TitleMenu/gameselect.ogg" id="7_0at05"]
 
