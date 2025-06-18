@@ -38,9 +38,11 @@ stretch_mode = 4
 
 [node name="time" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = 2.0
+offset_right = 493.0
+offset_bottom = 227.0
 script = ExtResource("3_0cgsq")
+time_limit = 20.0
 
 [node name="Timer" type="Timer" parent="time"]
 wait_time = 20.0
