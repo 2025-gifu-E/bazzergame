@@ -49,6 +49,8 @@ func check_clear():
 			return
 	print("ゲームクリア！")
 	release_focus()
+	var remaining_time = $time/Timer.time_left
+	$clearoverlay/VBoxContainer/cleartime.text ="クリアタイム:"+str(20-int(remaining_time))+"秒"
 	$time/Timer.stop()
 	$clearoverlay.visible = true
 	$clearoverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
