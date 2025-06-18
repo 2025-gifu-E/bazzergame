@@ -2,8 +2,8 @@ extends Control
 
 @export var GRID_SIZE :int= 3
 @export var random :int = 5
-var grid_state := []              # 二次元配列 (bool)
-var grid_buttons := []            # 二次元配列 (TextureButton)
+var grid_state :Array= []              # 二次元配列 (bool)
+var grid_buttons:Array = []            # 二次元配列 (TextureButton)
 
 @onready var grid_container = $MarginContainer/GridContainer
 var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")
@@ -26,7 +26,7 @@ func _ready() -> void:
 	randomize_grid_state(random)
 	update_all_buttons()
 	grid_buttons[0][0].grab_focus()
-func _on_button_pressed(x: int, y: int):
+func _on_button_pressed(x: int, y: int)-> void:
 	toggle(x, y)
 	toggle(x - 1, y)
 	toggle(x + 1, y)
@@ -35,15 +35,15 @@ func _on_button_pressed(x: int, y: int):
 	update_all_buttons()
 	check_clear()
 
-func toggle(x: int, y: int):
+func toggle(x: int, y: int)-> void:
 	if x >= 0 and x < GRID_SIZE and y >= 0 and y < GRID_SIZE:
 		grid_state[y][x] = !grid_state[y][x]
 
-func update_all_buttons():
+func update_all_buttons()-> void:
 	for y in range(GRID_SIZE):
 		for x in range(GRID_SIZE):
 			grid_buttons[y][x].update_texture(grid_state[y][x])
-func check_clear():
+func check_clear()-> void:
 	for row in grid_state:
 		if row.has(false):
 			return
@@ -60,7 +60,7 @@ func check_clear():
 	await get_tree().create_timer(3.0).timeout
 	get_tree().change_scene_to_file("res://TitleMenu/select.tscn")
 
-func randomize_grid_state(count := 10):
+func randomize_grid_state(count := 10)-> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 
