@@ -57,8 +57,8 @@ func check_clear()-> void:
 	$clearoverlay.create_tween().tween_property($clearoverlay, "modulate:a", 1, 1.0)
 	
 	# 数秒後にシーン切り替え
-	await get_tree().create_timer(3.0).timeout
-	get_tree().change_scene_to_file("res://TitleMenu/select.tscn")
+	await get_tree().create_timer(5.0).timeout
+	get_tree().change_scene_to_file("res://TitleMenu/title.tscn")
 
 func randomize_grid_state(count := 10)-> void:
 	var rng = RandomNumberGenerator.new()
@@ -79,5 +79,14 @@ func randomize_grid_state(count := 10)-> void:
 func _on_timer_timeout() -> void:
 	release_focus()
 	$gameoveroverlay.visible = true
-	$gameoveroverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
-	$gameoveroverlay.create_tween().tween_property($gameoveroverlay, "modulate:a", 1, 1.0)
+	$gameoveroverlay.position.y = -self.size.y
+	# Tweenで降りてくる
+	var tween = create_tween()
+	tween.tween_property($gameoveroverlay, "position:y", 0, 1.0).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	
+	await tween.finished
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	await get_tree().create_timer(5.0).timeout
+	get_tree().change_scene_to_file("res://TitleMenu/title.tscn")
