@@ -7,7 +7,7 @@ var grid_buttons := []            # 二次元配列 (TextureButton)
 
 @onready var grid_container = $MarginContainer/GridContainer
 var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")
-func _ready():
+func _ready() -> void:
 	grid_container.columns = GRID_SIZE
 	for y in range(GRID_SIZE):
 		var row_state = []
