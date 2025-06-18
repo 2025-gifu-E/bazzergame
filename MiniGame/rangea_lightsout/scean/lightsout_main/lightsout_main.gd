@@ -49,6 +49,7 @@ func check_clear():
 			return
 	print("ゲームクリア！")
 	release_focus()
+	$time/Timer.stop()
 	$clearoverlay.visible = true
 	$clearoverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
 	$clearoverlay.create_tween().tween_property($clearoverlay, "modulate:a", 1, 1.0)
@@ -71,3 +72,10 @@ func randomize_grid_state(count := 10):
 	for i in range(min(count, positions.size())):
 		var pos = positions[i]
 		grid_state[pos.y][pos.x] = true
+
+
+func _on_timer_timeout() -> void:
+	release_focus()
+	$gameoveroverlay.visible = true
+	$gameoveroverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
+	$gameoveroverlay.create_tween().tween_property($gameoveroverlay, "modulate:a", 1, 1.0)
