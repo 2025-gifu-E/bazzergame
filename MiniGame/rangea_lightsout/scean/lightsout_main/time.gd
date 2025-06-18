@@ -15,6 +15,7 @@ extends Control
 @onready var meter_bar: TextureProgressBar = $meter/bar
 @onready var update_timer: Timer = $update
 var ratio_time: float
+signal  time_out
 func _ready() -> void:
 	game_timer.wait_time = time_limit
 	game_timer.start()
@@ -53,3 +54,9 @@ func get_meter_color(value: float) -> Color:
 	var v: float = lerp(end_color.v, start_color.v, value / 100.0)
 	return Color.from_hsv(h, s, v)
 	
+	
+	
+
+
+func _on_timer_timeout() -> void:
+	emit_signal("time_out")
