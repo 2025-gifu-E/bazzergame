@@ -17,8 +17,6 @@ var ratio_time: float
 signal  time_out
 func _ready() -> void:
 	game_timer.wait_time = time_limit
-	game_timer.start()
-	update_timer.start()
 	ratio_time = 100.0/time_limit
 func _on_update_timeout() -> void:
 	var remaining_time: float = game_timer.time_left
@@ -52,9 +50,14 @@ func get_meter_color(value: float) -> Color:
 	var v: float = lerp(end_color.v, start_color.v, value / 100.0)
 	return Color.from_hsv(h, s, v)
 	
-	
-	
 
 
 func _on_timer_timeout() -> void:
 	emit_signal("time_out")
+
+func time_start() -> void:
+	game_timer.start()
+	update_timer.start()
+func time_stop() -> void:
+	game_timer.stop()
+	update_timer.stop()
