@@ -1,5 +1,4 @@
 extends Control
-
 @export var time_limit:float = 10.0
 @export var change_value_color:bool = true
 @export var meter_color: Color = Color(0,1,0)
@@ -16,6 +15,8 @@ extends Control
 var ratio_time: float
 signal  time_out
 func _ready() -> void:
+	# もし既に子がいなければ自動で中身生成
+	
 	game_timer.wait_time = time_limit
 	ratio_time = 100.0/time_limit
 func _on_update_timeout() -> void:
