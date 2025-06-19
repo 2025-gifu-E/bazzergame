@@ -15,10 +15,16 @@ extends Control
 var ratio_time: float
 signal  time_out
 func _ready() -> void:
-	# もし既に子がいなければ自動で中身生成
-	
 	game_timer.wait_time = time_limit
 	ratio_time = 100.0/time_limit
+	if meter_gradation ==  true:
+		meter_bar.tint_progress = start_color	
+	elif meter_gradation == false:
+		meter_bar.tint_progress = meter_color
+	time_label.add_theme_color_override("font_color",Color(0,0,0))
+	time_bar.value = time_limit*ratio_time
+	meter_bar.value = time_limit*ratio_time
+	time_label.text = str(int(time_limit))
 func _on_update_timeout() -> void:
 	var remaining_time: float = game_timer.time_left
 	var ratio_now_time: float = remaining_time/time_limit
