@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 10
 [node name="game_name" type="Label" parent="flavortext_background/MarginContainer/gamename_background/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "ライツアウト"
+text = "つけろ!!!!"
 horizontal_alignment = 1
 
 [node name="timer_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]
@@ -199,7 +199,8 @@ theme_override_font_sizes/font_size = 25
 text = "ライツアウトだよ。
 選択したボタンと周囲のボタン
 が反転して
-全部点灯させたらクリア"
+全部点灯(水色)させたら
+クリア"
 
 [node name="start" type="Button" parent="."]
 layout_mode = 1

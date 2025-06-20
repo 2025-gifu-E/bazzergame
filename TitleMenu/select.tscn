@@ -60,7 +60,7 @@ texture = ExtResource("4_xixsc")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="ライツアウト" type="TextureRect" parent="MarginContainer/GameImage"]
+[node name="つけろ!!!!" type="TextureRect" parent="MarginContainer/GameImage"]
 custom_minimum_size = Vector2(250, 139)
 layout_mode = 2
 texture = ExtResource("5_ubi57")
