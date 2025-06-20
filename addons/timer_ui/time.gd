@@ -68,3 +68,6 @@ func time_start() -> void:
 func time_stop() -> void:
 	game_timer.stop()
 	update_timer.stop()
+
+func time_left() -> float:
+	return game_timer.time_left

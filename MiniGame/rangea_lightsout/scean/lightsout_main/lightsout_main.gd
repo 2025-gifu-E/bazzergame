@@ -25,7 +25,12 @@ func _ready() -> void:
 		grid_buttons.append(row_buttons)
 	randomize_grid_state(random)
 	update_all_buttons()
+	#
+	var tween = create_tween()
+	tween.tween_property($Theme,"position",Vector2(537,103),0.5).set_ease(Tween.EASE_OUT)
+	await tween.finished
 	grid_buttons[0][0].grab_focus()
+	
 func _on_button_pressed(x: int, y: int)-> void:
 	toggle(x, y)
 	toggle(x - 1, y)
@@ -85,8 +90,6 @@ func _on_timer_timeout() -> void:
 	tween.tween_property($gameoveroverlay, "position:y", 0, 1.0).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 	
 	await tween.finished
-	
-	await get_tree().create_timer(2.0).timeout
 	
 	await get_tree().create_timer(5.0).timeout
 	get_tree().change_scene_to_file("res://TitleMenu/title.tscn")
