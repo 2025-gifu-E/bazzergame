@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgyp5frqgt80u"]
+[gd_scene load_steps=23 format=3 uid="uid://dgyp5frqgt80u"]
 
 [ext_resource type="Script" uid="uid://csjp6d5q7v0f4" path="res://MiniGame/Ariel_game1/ariel_game_1.gd" id="1_aveta"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_i7tfx"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_y25qh"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_c6d0v"]
 [ext_resource type="PackedScene" uid="uid://dsii8id16li2d" path="res://MiniGame/Ariel_game1/goal.tscn" id="4_y25qh"]
+[ext_resource type="AudioStream" uid="uid://c8jaah0ot4vat" path="res://MiniGame/Ariel_game1/kosenwaribiki_game1.ogg" id="5_c6d0v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aveta"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -128,7 +130,14 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2.5, 4)
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.847998, 0.529999, 0, -0.529999, 0.847998, 0, 2.5, 4)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_i7tfx")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="phantom1" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(1, 0, 0, 0, 0.847998, 0.529999, 0, -0.529999, 0.847998, 0, 2.5, 4)
@@ -139,7 +148,7 @@ tween_resource = SubResource("Resource_i7tfx")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="phantom2" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
-transform = Transform3D(1, 0, 0, 0, 0.6, 0.8, 0, -0.8, 0.6, 0, 4, 3)
+transform = Transform3D(1, 0, 0, 0, 0.514496, 0.857493, 0, -0.857493, 0.514496, 0, 5, 3)
 script = ExtResource("3_y25qh")
 look_at_mode = 2
 look_at_target = NodePath("../ball")
@@ -209,6 +218,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.647, -4.295)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 visible = false
 mesh = SubResource("CylinderMesh_y25qh")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c6d0v")
+autoplay = true
 
 [connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]
 [connection signal="body_entered" from="goal2" to="." method="_on_goal_body_entered"]

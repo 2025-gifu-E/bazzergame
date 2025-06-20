@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b8g2dg6tkscbh"]
 
 [ext_resource type="Script" uid="uid://bnty3l5v678px" path="res://TitleMenu/discription.gd" id="1_3fg12"]
-[ext_resource type="PackedScene" uid="uid://oows4t73rmft" path="res://TitleMenu/title.tscn" id="2_7h581"]
+[ext_resource type="PackedScene" uid="uid://dgyp5frqgt80u" path="res://MiniGame/Ariel_game1/ariel_game_1.tscn" id="2_3fg12"]
 [ext_resource type="Texture2D" uid="uid://c47mltxarecv" path="res://TitleMenu/sprites/校舎の写真.png" id="3_ttp1e"]
 [ext_resource type="Texture2D" uid="uid://b652ynyb2gbr8" path="res://TitleMenu/sprites/ui2-a.png" id="4_k04cb"]
 [ext_resource type="Texture2D" uid="uid://ntqjmyhnb3c0" path="res://TitleMenu/sprites/ui1-b.png" id="5_t5mio"]
@@ -19,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3fg12")
-game_scene = ExtResource("2_7h581")
+game_scene = ExtResource("2_3fg12")
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(1, 0.815686, 0.458824, 1)
@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 10
 [node name="game_name" type="Label" parent="flavortext_background/MarginContainer/gamename_background/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "ゲーム名！！"
+text = "ゴールに入れろ！！"
 horizontal_alignment = 1
 
 [node name="timer_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]

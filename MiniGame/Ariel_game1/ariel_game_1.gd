@@ -11,8 +11,6 @@ extends Node3D
 @onready var phantom_1: PhantomCamera3D = $phantom1
 @onready var phantom_2: PhantomCamera3D = $phantom2
 
-@onready var arrow_3: MeshInstance3D = $StaticBody3D/arrow3
-
 @onready var goal: Area3D = $goal
 @onready var goal_2: Area3D = $goal2
 @onready var goal_3: Area3D = $goal3
@@ -22,7 +20,8 @@ enum state{
 	power,
 	rotate,
 	rotate2,
-	shoot
+	shoot,
+	finish
 }
 
 var states:int
@@ -31,8 +30,10 @@ var power:float
 var rotate:Vector3
 
 var enter:bool = true
+var test:bool
 
 func _ready() -> void:
+	test = false
 	power_bar.show()
 	rotation_pivot.hide()
 	rotation_pivot2.hide()
@@ -40,7 +41,7 @@ func _ready() -> void:
 	animation_player.play("power_bar_value")
 
 	var host:Node = PhantomCameraHost.new()
-	camera.add_child(host)
+	#camera.add_child(host)
 	phantom_1.priority = 1
 	phantom_2.priority = 0
 
@@ -48,41 +49,87 @@ func _ready() -> void:
 
 func goal_set() -> void:
 	# 各ゴールのランダムな移動範囲を定義
-	# ここでは例として、XとZ軸の最小/最大値を設定し、Y軸は固定します。
 	var x_min: float = -7.5
 	var x_max: float = 7.5
-	var z_min: float = -2.0
-	var z_max: float = -7.5
+	var z_min: float = -7.5 # Z軸の最大値を調整し、より前方に配置できるようにしました。
+	var z_max: float = -2.0 # Z軸の最小値を調整し、同じ理由で。
 	var y_min: float = -1.5
 	var y_max: float = 2.5
 	var fixed_y: float = 0.5 # ゴールのY座標（高さ）を固定する場合
 
-	# ゴール1のランダムな位置を設定
-	var random_pos_goal = Vector3(
-		randf_range(x_min, x_max),
-		randf_range(y_min, y_max),
-		randf_range(z_min, z_max)
-	)
-	goal.position = random_pos_goal
-	# ゴール2のランダムな位置を設定
-	var random_pos_goal2 = Vector3(
-		randf_range(x_min, x_max),
-		randf_range(y_min, y_max),
-		randf_range(z_min, z_max)
-	)
-	goal_2.position = random_pos_goal2
-	# ゴール3のランダムな位置を設定
-	var random_pos_goal3 = Vector3(
-		randf_range(x_min, x_max),
-		randf_range(y_min, y_max),
-		randf_range(z_min, z_max)
-	)
-	goal_3.position = random_pos_goal3
+	var goal_radius: float = 1.0 # ゴールの半径（1メートル）
+	var min_distance: float = goal_radius * 2.0 # ゴール間の最小距離（直径分）
+
+	var positions: PackedVector3Array = [] # 配置済みのゴールの位置を格納する配列
+
+	# ゴール1の位置を設定
+	var random_pos_goal1: Vector3
+	while true: # 有効な位置が見つかるまでループ
+		random_pos_goal1 = Vector3(
+			randf_range(x_min, x_max),
+			randf_range(y_min, y_max),
+			randf_range(z_min, z_max)
+		)
+		# 円柱状のゴールの場合、主にXZ平面での重なりが問題になるため、Y座標を固定します。
+		# ゴールがY軸で大幅に異なる高さになり、それでもXYZ全体での重なりを避けたい場合は、
+		# 以下の距離チェックがそのまま適用されます。
+		random_pos_goal1.y = fixed_y # 必要に応じてY座標を固定
+
+		var valid_position = true
+		for existing_pos in positions: # 既に配置されたゴールとの距離をチェック
+			if random_pos_goal1.distance_to(existing_pos) < min_distance:
+				valid_position = false # 重なっている場合は無効
+				break
+		if valid_position:
+			goal.position = random_pos_goal1
+			positions.append(random_pos_goal1) # 有効な位置であれば追加
+			break # ループを抜ける
+
+	# ゴール2の位置を設定
+	var random_pos_goal2: Vector3
+	while true:
+		random_pos_goal2 = Vector3(
+			randf_range(x_min, x_max),
+			randf_range(y_min, y_max),
+			randf_range(z_min, z_max)
+		)
+		random_pos_goal2.y = fixed_y
+
+		var valid_position = true
+		for existing_pos in positions:
+			if random_pos_goal2.distance_to(existing_pos) < min_distance:
+				valid_position = false
+				break
+		if valid_position:
+			goal_2.position = random_pos_goal2
+			positions.append(random_pos_goal2)
+			break
+
+	# ゴール3の位置を設定
+	var random_pos_goal3: Vector3
+	while true:
+		random_pos_goal3 = Vector3(
+			randf_range(x_min, x_max),
+			randf_range(y_min, y_max),
+			randf_range(z_min, z_max)
+		)
+		random_pos_goal3.y = fixed_y
+
+		var valid_position = true
+		for existing_pos in positions:
+			if random_pos_goal3.distance_to(existing_pos) < min_distance:
+				valid_position = false
+				break
+		if valid_position:
+			goal_3.position = random_pos_goal3
+			positions.append(random_pos_goal3)
+			break
 
 func _process(delta: float) -> void:
 	if ball.position.y < -10:
-		SceneManager.reload_scene()
-		return
+		if !test:
+			SceneManager.reload_scene()
+			test = true
 	match states:
 		state.power:
 			enter = true
@@ -120,8 +167,10 @@ func _process(delta: float) -> void:
 				phantom_1.priority = 0
 				phantom_2.priority = 1
 				enter = false
-				await get_tree().create_timer(0.4).timeout
 				states = state.shoot
+		state.shoot:
+				states = state.finish
+				await get_tree().create_timer(0.4).timeout
 				rotation_pivot2.hide()
 				rotation_pivot.hide()
 				power_bar.hide()

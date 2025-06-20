@@ -11,8 +11,8 @@ func change_scene(game_name:String) -> void:
 		match game_name:
 			"おとすな！！":#selectシーンで追加したtexturerectの名前をかこう
 				game_path = "res://TitleMenu/discription.tscn"#game_pathに説明画面のシーンを入れよう
-			"GameName2":
-				game_path = "res://TitleMenu/discription.tscn"
+			"ゴールに入れろ！！":
+				game_path = "res://MiniGame/Ariel_game1/discription.tscn"
 			"GameName3":
 				game_path = "res://TitleMenu/discription.tscn"
 
