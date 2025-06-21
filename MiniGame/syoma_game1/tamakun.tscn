@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5gyq"]
 radius = 9.01388
 
-[node name="Tamakun" type="Area2D"]
+[node name="Tamakun" type="Area2D" groups=["tamas"]]
 script = ExtResource("1_q5gyq")
 
 [node name="Sprite" type="MeshInstance2D" parent="."]
