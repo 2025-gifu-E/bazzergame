@@ -3,7 +3,7 @@ extends Area2D
 signal game_over
 
 #idousokudo
-const MOVE_SPEED = 10
+const MOVE_SPEED = 500
 
 #gamennsize
 var _screen = Rect2()
