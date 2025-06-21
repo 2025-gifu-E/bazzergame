@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgyp5frqgt80u"]
+[gd_scene load_steps=30 format=3 uid="uid://dgyp5frqgt80u"]
 
 [ext_resource type="Script" uid="uid://csjp6d5q7v0f4" path="res://MiniGame/Ariel_game1/ariel_game_1.gd" id="1_aveta"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_i7tfx"]
@@ -22,6 +22,12 @@ glow_enabled = true
 
 [sub_resource type="Resource" id="Resource_i7tfx"]
 script = ExtResource("4_c6d0v")
+duration = 0.7
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_v8tag"]
+script = ExtResource("4_c6d0v")
 duration = 0.3
 transition = 0
 ease = 2
@@ -35,6 +41,13 @@ radius = 0.123
 radius = 0.123
 height = 0.245
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8tag"]
+
+[sub_resource type="TextMesh" id="TextMesh_147ej"]
+material = SubResource("StandardMaterial3D_v8tag")
+text = "↑"
+font_size = 100
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aveta"]
 
 [sub_resource type="TextMesh" id="TextMesh_d452c"]
@@ -43,6 +56,12 @@ text = "↑"
 font_size = 100
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aveta"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7tfx"]
+albedo_color = Color(0, 0.219608, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v8tag"]
+material = SubResource("StandardMaterial3D_i7tfx")
 
 [sub_resource type="Animation" id="Animation_y25qh"]
 length = 0.001
@@ -72,7 +91,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(-2, -2, -2),
 "update": 0,
-"values": [50.0, 100.0, 50.0]
+"values": [70.0, 110.0, 70.0]
 }
 
 [sub_resource type="Animation" id="Animation_c6d0v"]
@@ -88,7 +107,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.872665, 0, 0), Vector3(0, 0, 0), Vector3(1.0472, 0, 0)]
+"values": [Vector3(1.309, 0, 0), Vector3(0, 0, 0), Vector3(1.309, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_d452c"]
@@ -115,9 +134,16 @@ _data = {
 &"rotation2": SubResource("Animation_d452c")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_147ej"]
+albedo_color = Color(0.47451, 0.176471, 0, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_y25qh"]
+material = SubResource("StandardMaterial3D_147ej")
 top_radius = 7.5
 bottom_radius = 7.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i7tfx"]
+radius = 7.5
 
 [node name="Ariel_game1" type="Node3D"]
 script = ExtResource("1_aveta")
@@ -139,7 +165,7 @@ process_physics_priority = 300
 script = ExtResource("2_i7tfx")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="phantom1" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
+[node name="power_cam" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(1, 0, 0, 0, 0.847998, 0.529999, 0, -0.529999, 0.847998, 0, 2.5, 4)
 script = ExtResource("3_y25qh")
 look_at_mode = 2
@@ -147,12 +173,24 @@ look_at_target = NodePath("../ball")
 tween_resource = SubResource("Resource_i7tfx")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="phantom2" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
+[node name="rotate1_cam" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0)
+script = ExtResource("3_y25qh")
+tween_resource = SubResource("Resource_i7tfx")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="rotate2_cam" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7, -2)
+script = ExtResource("3_y25qh")
+tween_resource = SubResource("Resource_i7tfx")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="result_cam" type="Node3D" parent="." node_paths=PackedStringArray("look_at_target")]
 transform = Transform3D(1, 0, 0, 0, 0.514496, 0.857493, 0, -0.857493, 0.514496, 0, 5, 3)
 script = ExtResource("3_y25qh")
 look_at_mode = 2
 look_at_target = NodePath("../ball")
-tween_resource = SubResource("Resource_i7tfx")
+tween_resource = SubResource("Resource_v8tag")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="ball" type="RigidBody3D" parent="."]
@@ -177,18 +215,19 @@ offset_right = 250.0
 offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
-min_value = 50.0
-value = 50.0
+min_value = 70.0
+max_value = 110.0
+value = 70.0
 
 [node name="rotation_pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.642787, -0.766045, 0, 0.766045, 0.642787, 0, 0.3, 0)
 
 [node name="arrow" type="MeshInstance3D" parent="rotation_pivot"]
-transform = Transform3D(1, 0, 0, 0, -2.98023e-08, 1, 0, -1, -2.98023e-08, 0.04, 0, -0.5)
-mesh = SubResource("TextMesh_d452c")
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.04, 0, -0.5)
+mesh = SubResource("TextMesh_147ej")
 
 [node name="rotation_pivot2" type="Node3D" parent="."]
-transform = Transform3D(0.258819, 0, 0.965925, 0, 1, 0, -0.965925, 0, 0.258819, 0, 0, 0)
+transform = Transform3D(0.258816, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258816, 0, 0, 0)
 
 [node name="arrow2" type="MeshInstance3D" parent="rotation_pivot2"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -0.04, 0, -1)
@@ -200,13 +239,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_aveta")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_v8tag")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_y25qh")
 }
 
 [node name="goal" parent="." instance=ExtResource("4_y25qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.82802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -6.828)
 
 [node name="goal2" parent="." instance=ExtResource("4_y25qh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76188, 0, -4.29548)
@@ -214,14 +256,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76188, 0, -4.29548)
 [node name="goal3" parent="." instance=ExtResource("4_y25qh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.647, -4.295)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-visible = false
-mesh = SubResource("CylinderMesh_y25qh")
-
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_c6d0v")
 autoplay = true
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("CylinderMesh_y25qh")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("CylinderShape3D_i7tfx")
 
 [connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]
 [connection signal="body_entered" from="goal2" to="." method="_on_goal_body_entered"]

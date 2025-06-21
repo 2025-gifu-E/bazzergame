@@ -8,8 +8,11 @@ extends Node3D
 @onready var ball: RigidBody3D = $ball
 
 @onready var camera: Camera3D = $Camera
-@onready var phantom_1: PhantomCamera3D = $phantom1
-@onready var phantom_2: PhantomCamera3D = $phantom2
+@onready var power_cam: PhantomCamera3D = $power_cam
+@onready var rotate_1_cam: PhantomCamera3D = $rotate1_cam
+@onready var rotate_2_cam: PhantomCamera3D = $rotate2_cam
+@onready var result_cam: PhantomCamera3D = $result_cam
+
 
 @onready var goal: Area3D = $goal
 @onready var goal_2: Area3D = $goal2
@@ -42,8 +45,10 @@ func _ready() -> void:
 
 	var host:Node = PhantomCameraHost.new()
 	#camera.add_child(host)
-	phantom_1.priority = 1
-	phantom_2.priority = 0
+	power_cam.priority = 1
+	rotate_1_cam.priority = 0
+	rotate_2_cam.priority = 0
+	result_cam.priority = 0
 
 	goal_set()
 
@@ -139,9 +144,13 @@ func _process(delta: float) -> void:
 				animation_player.pause()
 				power = power_bar.value
 				enter = false
+				power_cam.priority = 0
+				rotate_1_cam.priority = 1
+				rotate_2_cam.priority = 0
+				result_cam.priority = 0
 				await get_tree().create_timer(0.3).timeout
 				states = state.rotate
-				rotation_pivot.rotation_degrees.x = 50
+				rotation_pivot.rotation_degrees.x = 75
 				animation_player.play("rotation")
 				rotation_pivot.show()
 		state.rotate:
@@ -152,6 +161,10 @@ func _process(delta: float) -> void:
 				animation_player.pause()
 				rotate.x = rotation_pivot.rotation.x
 				enter = false
+				power_cam.priority = 0
+				rotate_1_cam.priority = 0
+				rotate_2_cam.priority = 1
+				result_cam.priority = 0
 				await get_tree().create_timer(0.3).timeout
 				states = state.rotate2
 				rotation_pivot2.rotation_degrees.y = 50
@@ -164,8 +177,10 @@ func _process(delta: float) -> void:
 					return
 				animation_player.pause()
 				rotate.y = rotation_pivot2.rotation.y
-				phantom_1.priority = 0
-				phantom_2.priority = 1
+				power_cam.priority = 0
+				rotate_1_cam.priority = 0
+				rotate_2_cam.priority = 0
+				result_cam.priority = 1
 				enter = false
 				states = state.shoot
 		state.shoot:
