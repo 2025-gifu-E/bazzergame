@@ -46,3 +46,13 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event.is_pressed():
 			game_over.emit()
 			queue_free()
+			
+func _on_target_shot() -> void:
+	if self.overlaps_target():
+		game_over.emit()
+		queue_free()
+func overlaps_target():
+	var target = get_parent().get_node("target")
+	if target is Area2D:
+		return self in target.get_overlapping_areas()
+	return false

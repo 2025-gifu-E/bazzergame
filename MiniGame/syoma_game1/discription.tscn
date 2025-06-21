@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 10
 [node name="game_name" type="Label" parent="flavortext_background/MarginContainer/gamename_background/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "タッチしろ!!!!"
+text = "撃ち落とせ!!!!"
 horizontal_alignment = 1
 
 [node name="timer_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]
