@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkwnr4gqhrg1t"]
+
+[ext_resource type="Script" uid="uid://bq08gir3o7fwe" path="res://addons/timer_ui/time.gd" id="1_rest6"]
+[ext_resource type="Texture2D" uid="uid://xdm3i6oeq1aw" path="res://addons/timer_ui/clockbace.png" id="2_bafth"]
+[ext_resource type="Texture2D" uid="uid://c4t7000giq7gn" path="res://addons/timer_ui/clockmeter.png" id="3_y0ohx"]
+[ext_resource type="Texture2D" uid="uid://ielc8h8d4nmo" path="res://addons/timer_ui/matebase.png" id="4_ogpef"]
+[ext_resource type="Texture2D" uid="uid://d4eclwsklpfjx" path="res://addons/timer_ui/mate_meter.png" id="5_x7ub6"]
+
+[node name="time" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 2.0
+offset_right = 493.0
+offset_bottom = 227.0
+script = ExtResource("1_rest6")
+time_limit = 20.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+ignore_time_scale = true
+
+[node name="clock" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="clockbase" type="TextureRect" parent="clock"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("2_bafth")
+
+[node name="clockemeter" type="TextureProgressBar" parent="clock"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 93.0
+offset_right = 171.0
+offset_bottom = 183.0
+value = 20.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("3_y0ohx")
+texture_progress = ExtResource("3_y0ohx")
+tint_progress = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="time" type="Label" parent="clock"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 127.0
+offset_right = 153.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "20"
+horizontal_alignment = 1
+
+[node name="meter" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 212.0
+offset_top = 10.0
+offset_right = 252.0
+offset_bottom = 50.0
+
+[node name="bar" type="TextureProgressBar" parent="meter"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_ogpef")
+texture_progress = ExtResource("5_x7ub6")
+
+[node name="update" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="update" to="." method="_on_update_timeout"]
