@@ -19,5 +19,5 @@ func _process(delta: float) -> void:
 func _on_time_time_out() -> void:
 	_lavel2.visible = true
 	get_tree().call_group("tamas","hide")
-	
-	
+	get_tree().call_group("ozyamato-kunns","queue_free")
+	timer.time_stop()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://o1djmb642hey"]
+[gd_scene load_steps=7 format=3 uid="uid://o1djmb642hey"]
 
 [ext_resource type="Script" uid="uid://yvft51oork20" path="res://MiniGame/syoma_game1/mainn.gd" id="1_biu26"]
 [ext_resource type="PackedScene" uid="uid://y2vswf1n3gno" path="res://MiniGame/syoma_game1/tamakun.tscn" id="1_ie5t8"]
 [ext_resource type="PackedScene" uid="uid://bkwnr4gqhrg1t" path="res://addons/timer_ui/timer_ui.tscn" id="3_p0awb"]
+[ext_resource type="PackedScene" uid="uid://0ghwenbms83x" path="res://MiniGame/syoma_game1/ozyamato-kunn.tscn" id="4_5dnsr"]
 
 [sub_resource type="Theme" id="Theme_p0awb"]
 default_font_size = 50
@@ -71,4 +72,20 @@ text = "GAMEOVER
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Ozyamato-kunn" parent="." instance=ExtResource("4_5dnsr")]
+position = Vector2(352, 312)
+
+[node name="Ozyamato-kunn2" parent="." instance=ExtResource("4_5dnsr")]
+position = Vector2(832, 200)
+
+[node name="Ozyamato-kunn3" parent="." instance=ExtResource("4_5dnsr")]
+position = Vector2(192, 512)
+
+[node name="Ozyamato-kunn4" parent="." groups=["tamas"] instance=ExtResource("4_5dnsr")]
+position = Vector2(784, 400)
+
 [connection signal="time_out" from="time" to="." method="_on_time_time_out"]
+[connection signal="game_over" from="Ozyamato-kunn" to="." method="_on_time_time_out"]
+[connection signal="game_over" from="Ozyamato-kunn2" to="." method="_on_time_time_out"]
+[connection signal="game_over" from="Ozyamato-kunn3" to="." method="_on_time_time_out"]
+[connection signal="game_over" from="Ozyamato-kunn4" to="." method="_on_time_time_out"]
