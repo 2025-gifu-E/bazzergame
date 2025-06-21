@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bkwnr4gqhrg1t"]
 
-[ext_resource type="Script" uid="uid://dkx11oprpwudn" path="res://addons/timer_ui/time.gd" id="1_rest6"]
-[ext_resource type="Texture2D" uid="uid://c4l4wbxkkdb41" path="res://addons/timer_ui/clockbace.png" id="2_bafth"]
-[ext_resource type="Texture2D" uid="uid://m86hspqgy5nm" path="res://addons/timer_ui/clockmeter.png" id="3_y0ohx"]
-[ext_resource type="Texture2D" uid="uid://coh13n1fi3ij8" path="res://addons/timer_ui/matebase.png" id="4_ogpef"]
-[ext_resource type="Texture2D" uid="uid://1mu8ap4tt4vg" path="res://addons/timer_ui/mate_meter.png" id="5_x7ub6"]
+[ext_resource type="Script" uid="uid://bq08gir3o7fwe" path="res://addons/timer_ui/time.gd" id="1_rest6"]
+[ext_resource type="Texture2D" uid="uid://xdm3i6oeq1aw" path="res://addons/timer_ui/clockbace.png" id="2_bafth"]
+[ext_resource type="Texture2D" uid="uid://c4t7000giq7gn" path="res://addons/timer_ui/clockmeter.png" id="3_y0ohx"]
+[ext_resource type="Texture2D" uid="uid://ielc8h8d4nmo" path="res://addons/timer_ui/matebase.png" id="4_ogpef"]
+[ext_resource type="Texture2D" uid="uid://d4eclwsklpfjx" path="res://addons/timer_ui/mate_meter.png" id="5_x7ub6"]
 
 [node name="time" type="Control"]
 layout_mode = 3
