@@ -1,3 +1,53 @@
-[gd_scene format=3 uid="uid://o1djmb642hey"]
+[gd_scene load_steps=4 format=3 uid="uid://o1djmb642hey"]
+
+[ext_resource type="Script" uid="uid://yvft51oork20" path="res://MiniGame/syoma_game1/mainn.gd" id="1_biu26"]
+[ext_resource type="PackedScene" uid="uid://y2vswf1n3gno" path="res://MiniGame/syoma_game1/tamakun.tscn" id="1_ie5t8"]
+
+[sub_resource type="Theme" id="Theme_p0awb"]
+default_font_size = 50
 
 [node name="Mainn" type="Node2D"]
+script = ExtResource("1_biu26")
+
+[node name="Tamakun" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(239, 132)
+
+[node name="Tamakun2" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(923, 340)
+
+[node name="Tamakun3" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(369, 455)
+
+[node name="Tamakun4" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(739, 120)
+
+[node name="Tamakun5" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(93, 366)
+
+[node name="Tamakun6" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(539, 250)
+
+[node name="Tamakun7" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(664, 535)
+
+[node name="Tamakun8" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(1020, 92)
+
+[node name="Tamakun9" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(977, 561)
+
+[node name="Tamakun10" parent="." instance=ExtResource("1_ie5t8")]
+position = Vector2(91, 104)
+
+[node name="gameclear" type="Label" parent="."]
+visible = false
+offset_top = 256.0
+offset_right = 1152.0
+offset_bottom = 384.0
+theme = SubResource("Theme_p0awb")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "GAMECREAR
+おめでとう！！"
+horizontal_alignment = 1
+vertical_alignment = 1

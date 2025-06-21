@@ -1,7 +1,7 @@
-extends Node2D
+extends Area2D
 
 #idousokudo
-const MOVE_SPEED = 1000
+const MOVE_SPEED = 500
 
 #gamennsize
 var _screen = Rect2()
@@ -34,6 +34,19 @@ func _process(delta: float) -> void:
 	if position.y > _screen.size.y:
 		position.y = _screen.size.y
 		_velocity.y *= -1
+	
+	
+	
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			queue_free()
+	
+	
+	
+	
 	
 	
 	
