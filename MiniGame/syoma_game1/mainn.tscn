@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://o1djmb642hey"]
+[gd_scene load_steps=8 format=3 uid="uid://o1djmb642hey"]
 
 [ext_resource type="Script" uid="uid://yvft51oork20" path="res://MiniGame/syoma_game1/mainn.gd" id="1_biu26"]
 [ext_resource type="PackedScene" uid="uid://y2vswf1n3gno" path="res://MiniGame/syoma_game1/tamakun.tscn" id="1_ie5t8"]
 [ext_resource type="PackedScene" uid="uid://bkwnr4gqhrg1t" path="res://addons/timer_ui/timer_ui.tscn" id="3_p0awb"]
 [ext_resource type="PackedScene" uid="uid://0ghwenbms83x" path="res://MiniGame/syoma_game1/ozyamato-kunn.tscn" id="4_5dnsr"]
+[ext_resource type="Script" uid="uid://bq08gir3o7fwe" path="res://addons/timer_ui/time.gd" id="4_tv68t"]
 
 [sub_resource type="Theme" id="Theme_p0awb"]
 default_font_size = 50
@@ -58,6 +59,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="time" parent="." instance=ExtResource("3_p0awb")]
+script = ExtResource("4_tv68t")
 
 [node name="gameover" type="Label" parent="."]
 visible = false

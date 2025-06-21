@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var timer = $time
+@onready var timer =$time
 @onready var _label = $gameclear
 @onready var _lavel2 = $gameover
 

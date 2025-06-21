@@ -1,0 +1,223 @@
+[gd_scene load_steps=11 format=3 uid="uid://cpnya5cf35hlf"]
+
+[ext_resource type="Script" uid="uid://bnty3l5v678px" path="res://TitleMenu/discription.gd" id="1_fg3tm"]
+[ext_resource type="PackedScene" uid="uid://o1djmb642hey" path="res://MiniGame/syoma_game1/mainn.tscn" id="2_fg3tm"]
+[ext_resource type="Texture2D" uid="uid://c47mltxarecv" path="res://TitleMenu/sprites/校舎の写真.png" id="3_lyay0"]
+[ext_resource type="Texture2D" uid="uid://b652ynyb2gbr8" path="res://TitleMenu/sprites/ui2-a.png" id="4_3b4vx"]
+[ext_resource type="Texture2D" uid="uid://ntqjmyhnb3c0" path="res://TitleMenu/sprites/ui1-b.png" id="5_nioxr"]
+[ext_resource type="Texture2D" uid="uid://odvoajrhkqpp" path="res://TitleMenu/sprites/ui3-b.png" id="6_21sh4"]
+[ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="7_w5cm7"]
+[ext_resource type="Texture2D" uid="uid://cpn7ayruvuf41" path="res://TitleMenu/sprites/ui3-a.png" id="8_an2ro"]
+[ext_resource type="Texture2D" uid="uid://cvmulw6601403" path="res://MiniGame/syoma_game1/スクリーンショット 2025-06-21 125904.png" id="9_fg3tm"]
+[ext_resource type="AudioStream" uid="uid://dep0uk4r57hh7" path="res://TitleMenu/Logic&Contradiction.ogg" id="10_tjsjh"]
+
+[node name="discription" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fg3tm")
+game_scene = ExtResource("2_fg3tm")
+
+[node name="background" type="TextureRect" parent="."]
+modulate = Color(1, 0.815686, 0.458824, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -598.5
+offset_top = -449.0
+offset_right = 598.5
+offset_bottom = 449.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lyay0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="flavortext_background" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(1052, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 10.0
+grow_horizontal = 2
+texture = ExtResource("4_3b4vx")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="flavortext_background"]
+custom_minimum_size = Vector2(1152, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="flavortext_background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="gamename_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("5_nioxr")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="flavortext_background/MarginContainer/gamename_background"]
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="game_name" type="Label" parent="flavortext_background/MarginContainer/gamename_background/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "タッチしろ!!!!"
+horizontal_alignment = 1
+
+[node name="timer_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("6_21sh4")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="flavortext_background/MarginContainer/timer_background"]
+custom_minimum_size = Vector2(200, 90)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="time" type="Label" parent="flavortext_background/MarginContainer/timer_background/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[node name="cursor" type="TextureRect" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_w5cm7")
+stretch_mode = 4
+
+[node name="discription_background" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.733333)
+custom_minimum_size = Vector2(750, 500)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 0.205
+anchor_right = 0.826
+anchor_bottom = 0.937
+offset_left = 0.551987
+offset_top = -25.84
+offset_right = -0.552063
+offset_bottom = -0.176025
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_an2ro")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="discription_background"]
+custom_minimum_size = Vector2(750, 500)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="discription_background/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="discription_background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+
+[node name="プレイ映像" type="TextureRect" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+texture = ExtResource("9_fg3tm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="操作方法" type="Label" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "操作方法をここに！！！"
+
+[node name="VSeparator" type="VSeparator" parent="discription_background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="discription_background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 25
+text = "ゲーム説明をここに！！！"
+
+[node name="start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -186.0
+offset_top = -54.0
+offset_right = -3.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 35
+text = "はじめる!"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="discribe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_tjsjh")
+volume_db = -7.0
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_start_pressed"]
