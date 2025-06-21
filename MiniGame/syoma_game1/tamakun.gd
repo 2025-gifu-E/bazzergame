@@ -1,7 +1,7 @@
 extends Node2D
 
 #idousokudo
-const MOVE_SPEED = 200
+const MOVE_SPEED = 1000
 
 #gamennsize
 var _screen = Rect2()
