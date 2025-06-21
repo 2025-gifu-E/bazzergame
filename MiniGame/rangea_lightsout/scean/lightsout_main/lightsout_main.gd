@@ -133,7 +133,6 @@ func clear_focus_all():
 	if focused != null:
 		focused.release_focus()
 	# さらに明示的に Viewport 全体のフォーカス無効にする
-	get_viewport().gui_disable_input = true
 
 
 func _on_titlebutton_pressed() -> void:
