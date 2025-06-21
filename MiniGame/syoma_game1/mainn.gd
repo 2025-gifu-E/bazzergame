@@ -14,6 +14,9 @@ func _process(delta: float) -> void:
 			cnt += 1
 	if cnt == 0:
 		_label.visible = true
+		timer.time_stop()
+		await get_tree().create_timer(5.0).timeout
+		get_tree().change_scene_to_file("res://TitleMenu/title.tscn")
 
 
 func _on_time_time_out() -> void:
@@ -21,3 +24,5 @@ func _on_time_time_out() -> void:
 	get_tree().call_group("tamas","hide")
 	get_tree().call_group("ozyamato-kunns","queue_free")
 	timer.time_stop()
+	await get_tree().create_timer(5.0).timeout
+	get_tree().change_scene_to_file("res://TitleMenu/title.tscn")
