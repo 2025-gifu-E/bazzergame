@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://odvoajrhkqpp" path="res://TitleMenu/sprites/ui3-b.png" id="6_mghor"]
 [ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="7_4pddh"]
 [ext_resource type="Texture2D" uid="uid://cpn7ayruvuf41" path="res://TitleMenu/sprites/ui3-a.png" id="8_jrnrf"]
-[ext_resource type="Texture2D" uid="uid://btks2syovcprw" path="res://TitleMenu/sprites/スクリーンショット 2024-10-26 112119.png" id="9_fkplw"]
+[ext_resource type="Texture2D" uid="uid://ca6ncsl2f5efm" path="res://MiniGame/Ariel_game1/Ariel_game1.png" id="9_3fg12"]
 [ext_resource type="AudioStream" uid="uid://dep0uk4r57hh7" path="res://TitleMenu/Logic&Contradiction.ogg" id="10_68wf3"]
 
 [node name="discription" type="Control"]
@@ -170,7 +170,7 @@ layout_mode = 2
 [node name="プレイ映像" type="TextureRect" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-texture = ExtResource("9_fkplw")
+texture = ExtResource("9_3fg12")
 expand_mode = 1
 stretch_mode = 4
 
@@ -181,8 +181,13 @@ theme_override_constants/separation = 10
 [node name="操作方法" type="Label" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 20
-text = "操作方法をここに！！！"
+theme_override_font_sizes/font_size = 25
+text = "Aボタンをおして決定だ
+・パワー
+・上下方向
+・左右方向
+の順番に決めるぞ"
+autowrap_mode = 1
 
 [node name="VSeparator" type="VSeparator" parent="discription_background/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -192,8 +197,12 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 25
-text = "ゲーム説明をここに！！！"
+theme_override_font_sizes/font_size = 30
+text = "パワーと方向を決めて、
+ランダムに出て来る3つのかごのどれかにボールを
+入れよう!
+"
+autowrap_mode = 1
 
 [node name="start" type="Button" parent="."]
 layout_mode = 1
