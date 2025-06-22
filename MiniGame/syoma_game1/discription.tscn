@@ -197,7 +197,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
 text = "制限時間以内に丸を全部
-撃ち落とせ四角を落ち落とすと
+撃ち落とせ
+四角を落ち落とすと
 即ゲームオーバーだから
 気をつけろ"
 

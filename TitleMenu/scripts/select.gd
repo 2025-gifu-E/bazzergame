@@ -37,8 +37,8 @@ func _process(delta: float) -> void:
 	if current_game_name != game_name.text:
 		game_name.text = current_game_name
 	
-	if Input.is_action_just_pressed("enter"):
-		SceneStorage.change_scene("撃ち落とせ!!!!")
+	#if Input.is_action_just_pressed("enter"):
+		#SceneStorage.change_scene("撃ち落とせ!!!!")
 
 #基本的にいじらなくても機能しますよ。
 #逆にいじるとセレクトがうまくいかなくなるよ
