@@ -1,7 +1,8 @@
 # 割引ゲーム
 高専祭に出す予定の割引ゲーム用リポジトリ  
 初めてのGitHubを使った共同製作です。
-以下のミニゲーム集だ!!!!
+以下のミニゲーム集だ!!!!  
+**[ダウンロード](https://github.com/2025-gifu-E/bazzergame/releases/download/pre-1.0/waribikigame-pre1.0.zip)**
 ## つけろ!!!![製作者:rangea]
 ライツアウトです。  
 右スティックで選択してAで決定します。
