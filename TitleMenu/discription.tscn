@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 10
 [node name="game_name" type="Label" parent="flavortext_background/MarginContainer/gamename_background/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "ゲーム名！！"
+text = "ゲーム名！！！！"
 horizontal_alignment = 1
 
 [node name="timer_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]
@@ -179,6 +179,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="操作方法" type="Label" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 262)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
@@ -188,12 +189,14 @@ text = "操作方法をここに！！！"
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="discription_background/MarginContainer/HBoxContainer"]
+[node name="ゲーム説明" type="Label" parent="discription_background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(362, 480)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
 text = "ゲーム説明をここに！！！"
+autowrap_mode = 1
 
 [node name="start" type="Button" parent="."]
 layout_mode = 1
