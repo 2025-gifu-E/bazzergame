@@ -1,6 +1,7 @@
 extends Area2D
 
 signal game_over
+@onready var main:Node2D = get_parent()
 
 #idousokudo
 const MOVE_SPEED = 500
@@ -43,12 +44,12 @@ func _process(delta: float) -> void:
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
-		if event.is_pressed():
+		if event.is_pressed() and main.game_start:
 			game_over.emit()
 			queue_free()
 			
 func _on_target_shot() -> void:
-	if self.overlaps_target():
+	if self.overlaps_target() and main.game_start:
 		game_over.emit()
 		queue_free()
 func overlaps_target():

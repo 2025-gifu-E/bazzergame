@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://o1djmb642hey"]
+[gd_scene load_steps=9 format=3 uid="uid://o1djmb642hey"]
 
 [ext_resource type="Script" uid="uid://yvft51oork20" path="res://MiniGame/syoma_game1/mainn.gd" id="1_biu26"]
 [ext_resource type="PackedScene" uid="uid://y2vswf1n3gno" path="res://MiniGame/syoma_game1/tamakun.tscn" id="1_ie5t8"]
 [ext_resource type="PackedScene" uid="uid://b3xwb31g7mt37" path="res://MiniGame/syoma_game1/target.tscn" id="2_tv68t"]
 [ext_resource type="PackedScene" uid="uid://bkwnr4gqhrg1t" path="res://addons/timer_ui/timer_ui.tscn" id="3_p0awb"]
 [ext_resource type="PackedScene" uid="uid://0ghwenbms83x" path="res://MiniGame/syoma_game1/ozyamato-kunn.tscn" id="4_5dnsr"]
+[ext_resource type="AudioStream" uid="uid://des1t3hg11413" path="res://MiniGame/rangea_lightsout/audio/kosenwaribiki_game1.ogg" id="6_3jfug"]
 
 [sub_resource type="Theme" id="Theme_p0awb"]
 default_font_size = 50
@@ -89,6 +90,46 @@ position = Vector2(784, 400)
 position = Vector2(572, 330)
 scale = Vector2(2, 2)
 target_speed = 1000.0
+
+[node name="startoverlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="startoverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1153.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.533333)
+
+[node name="countdown_time" type="Label" parent="startoverlay"]
+layout_mode = 2
+offset_left = 354.0
+offset_top = 340.0
+offset_right = 802.0
+offset_bottom = 391.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "3"
+horizontal_alignment = 1
+
+[node name="Theme" type="Label" parent="."]
+offset_left = 366.0
+offset_top = 270.0
+offset_right = 942.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(0.19, 0.19, 0.19, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "撃ち落とせ!!!!"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3jfug")
 
 [connection signal="time_out" from="time" to="." method="_on_time_time_out"]
 [connection signal="game_over" from="Ozyamato-kunn" to="." method="_on_time_time_out"]

@@ -7,12 +7,16 @@ var grid_buttons:Array = []            # 二次元配列 (TextureButton)
 
 @onready var grid_container = $MarginContainer/GridContainer
 @onready var countdown_label = $startoverlay/countdown_time
+@onready var bgm: AudioStreamPlayer = $BGM
+
 var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")
 var waiting_for_next_scene = false
 func _ready() -> void:
+	bgm.play()
 	countdown_label.visible = true
 	countdown_label.text = "3"
 	grid_container.columns = GRID_SIZE
+	
 	for y in range(GRID_SIZE):
 		var row_state = []
 		var row_buttons = []

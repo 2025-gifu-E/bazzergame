@@ -182,7 +182,10 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
-text = "操作方法をここに！！！"
+text = "右スティックで操作
+Aボタンで撃破
+YボタンまたはLボタンで加速
+Bボタンで減速"
 
 [node name="VSeparator" type="VSeparator" parent="discription_background/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -193,7 +196,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
-text = "ゲーム説明をここに！！！"
+text = "制限時間以内に丸を全部
+撃ち落とせ四角を落ち落とすと
+即ゲームオーバーだから
+気をつけろ"
 
 [node name="start" type="Button" parent="."]
 layout_mode = 1
