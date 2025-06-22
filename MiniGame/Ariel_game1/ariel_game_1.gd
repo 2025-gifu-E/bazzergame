@@ -18,6 +18,10 @@ extends Node3D
 @onready var goal_2: Area3D = $goal2
 @onready var goal_3: Area3D = $goal3
 
+@onready var clear: RichTextLabel = $ui/clear
+@onready var gameover: RichTextLabel = $ui/gameover
+@onready var color_rect: ColorRect = $ui/ColorRect
+@onready var count: Label = $ui/count
 
 enum state{
 	power,
@@ -35,7 +39,16 @@ var rotate:Vector3
 var enter:bool = true
 var test:bool
 
+var ok:bool
+
+
 func _ready() -> void:
+	ok = false
+	count.show()
+	clear.hide()
+	gameover.hide()
+	color_rect.hide()
+	color_rect.color = Color("#00000000")
 	test = false
 	power_bar.show()
 	rotation_pivot.hide()
@@ -51,6 +64,18 @@ func _ready() -> void:
 	result_cam.priority = 0
 
 	goal_set()
+	
+	await SceneManager.transition_finished
+	count.text = "3"
+	await get_tree().create_timer(1.0).timeout
+	count.text = "2"
+	await get_tree().create_timer(1.0).timeout
+	count.text = "1"
+	await get_tree().create_timer(1.0).timeout
+	count.text = "START"
+	await get_tree().create_timer(1.0).timeout
+	ok = true
+	count.hide()
 
 func goal_set() -> void:
 	# 各ゴールのランダムな移動範囲を定義
@@ -131,10 +156,10 @@ func goal_set() -> void:
 			break
 
 func _process(delta: float) -> void:
-	if ball.position.y < -10:
-		if !test:
-			SceneManager.reload_scene()
-			test = true
+	if !ok:
+		return
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#_on_goal_body_entered(ball)
 	match states:
 		state.power:
 			enter = true
@@ -186,6 +211,7 @@ func _process(delta: float) -> void:
 		state.shoot:
 				states = state.finish
 				await get_tree().create_timer(0.4).timeout
+				power_bar.hide()
 				rotation_pivot2.hide()
 				rotation_pivot.hide()
 				power_bar.hide()
@@ -204,6 +230,22 @@ func _process(delta: float) -> void:
 				ball.apply_central_impulse(shoot_direction.normalized() * shoot_force)
 
 
-
 func _on_goal_body_entered(body: Node3D) -> void:
-	print("やったー")
+	color_rect.show()
+	create_tween().tween_property(color_rect,"color",Color("#0000006d"),1.0)
+	await get_tree().create_timer(1.0).timeout
+	clear.show()
+	await get_tree().create_timer(3.0).timeout
+	SceneManager.change_scene("res://TitleMenu/title.tscn")
+
+func _on_gameover_body_entered(body: Node3D) -> void:
+	color_rect.show()
+	create_tween().tween_property(color_rect,"color",Color("#0000006d"),1.0)
+	await get_tree().create_timer(1.0).timeout
+	gameover.show()
+	var tween = create_tween()
+	tween.tween_property(gameover, "position:y", 251, 1.0).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tween.tween_interval(0.1)
+	tween.tween_property(gameover, "rotation", 0.1, 0.1).set_ease(Tween.EASE_OUT)
+	await get_tree().create_timer(3.0).timeout
+	SceneManager.change_scene("res://TitleMenu/title.tscn")

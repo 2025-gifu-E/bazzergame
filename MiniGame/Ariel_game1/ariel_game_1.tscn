@@ -1,11 +1,13 @@
-[gd_scene load_steps=30 format=3 uid="uid://dgyp5frqgt80u"]
+[gd_scene load_steps=38 format=3 uid="uid://dgyp5frqgt80u"]
 
 [ext_resource type="Script" uid="uid://csjp6d5q7v0f4" path="res://MiniGame/Ariel_game1/ariel_game_1.gd" id="1_aveta"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_i7tfx"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_y25qh"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_c6d0v"]
 [ext_resource type="PackedScene" uid="uid://dsii8id16li2d" path="res://MiniGame/Ariel_game1/goal.tscn" id="4_y25qh"]
-[ext_resource type="AudioStream" uid="uid://c8jaah0ot4vat" path="res://MiniGame/Ariel_game1/kosenwaribiki_game1.ogg" id="5_c6d0v"]
+[ext_resource type="AudioStream" uid="uid://br5bj1g21alu" path="res://MiniGame/Ariel_game1/kosenwaribiki_game1.ogg" id="5_c6d0v"]
+[ext_resource type="Texture2D" uid="uid://dl2qk0oxolegg" path="res://MiniGame/Ariel_game1/grass_block_texture-grass-field.jpg" id="7_147ej"]
+[ext_resource type="Texture2D" uid="uid://b8qb666dyx56h" path="res://MiniGame/Ariel_game1/grass_block_texture-grass-field_n.jpg" id="8_xb21v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aveta"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -134,16 +136,47 @@ _data = {
 &"rotation2": SubResource("Animation_d452c")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_147ej"]
-albedo_color = Color(0.47451, 0.176471, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f14c0"]
+albedo_texture = ExtResource("7_147ej")
+normal_enabled = true
+normal_texture = ExtResource("8_xb21v")
+uv1_scale = Vector3(50, 50, 50)
+uv2_scale = Vector3(50, 50, 50)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_y25qh"]
-material = SubResource("StandardMaterial3D_147ej")
-top_radius = 7.5
-bottom_radius = 7.5
+material = SubResource("StandardMaterial3D_f14c0")
+top_radius = 15.0
+bottom_radius = 15.0
+height = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i7tfx"]
-radius = 7.5
+height = 1.0
+radius = 15.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_xb21v"]
+inner_radius = 15.0
+outer_radius = 14.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_147ej"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xb21v"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_147ej")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_xb21v"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_xb21v")
+
+[sub_resource type="TextMesh" id="TextMesh_xb21v"]
+text = "POWER 100%
+↓"
+font_size = 100
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_147ej"]
+height = 0.5
+radius = 30.0
 
 [node name="Ariel_game1" type="Node3D"]
 script = ExtResource("1_aveta")
@@ -270,6 +303,114 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("CylinderShape3D_i7tfx")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("TorusMesh_xb21v")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="clear" type="RichTextLabel" parent="ui"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -73.0
+offset_right = 390.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "CLEAR!!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gameover" type="RichTextLabel" parent="ui"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -517.0
+offset_top = -324.0
+offset_right = 517.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "GAMEOVER!!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="ui"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.427451)
+
+[node name="count" type="Label" parent="ui"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -432.0
+offset_top = -50.0
+offset_right = 432.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22922, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18796, 0)
+mesh = SubResource("QuadMesh_xb21v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15)
+mesh = SubResource("TextMesh_xb21v")
+
+[node name="gameover" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gameover"]
+shape = SubResource("CylinderShape3D_147ej")
+
 [connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]
 [connection signal="body_entered" from="goal2" to="." method="_on_goal_body_entered"]
 [connection signal="body_entered" from="goal3" to="." method="_on_goal_body_entered"]
+[connection signal="body_entered" from="gameover" to="." method="_on_gameover_body_entered"]
