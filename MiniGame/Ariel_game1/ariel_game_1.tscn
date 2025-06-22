@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dgyp5frqgt80u"]
+[gd_scene load_steps=35 format=3 uid="uid://dgyp5frqgt80u"]
 
 [ext_resource type="Script" uid="uid://csjp6d5q7v0f4" path="res://MiniGame/Ariel_game1/ariel_game_1.gd" id="1_aveta"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_i7tfx"]
@@ -157,18 +157,6 @@ radius = 15.0
 inner_radius = 15.0
 outer_radius = 14.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_147ej"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xb21v"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_147ej")
-billboard_mode = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_xb21v"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_xb21v")
-
 [sub_resource type="TextMesh" id="TextMesh_xb21v"]
 text = "POWER 100%
 ↓"
@@ -307,6 +295,11 @@ shape = SubResource("CylinderShape3D_i7tfx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("TorusMesh_xb21v")
 
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.68796, -15)
+mesh = SubResource("TextMesh_xb21v")
+skeleton = NodePath("")
+
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -388,21 +381,6 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="SubViewport" type="SubViewport" parent="."]
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22922, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18796, 0)
-mesh = SubResource("QuadMesh_xb21v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15)
-mesh = SubResource("TextMesh_xb21v")
 
 [node name="gameover" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
