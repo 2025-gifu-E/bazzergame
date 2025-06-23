@@ -8,12 +8,14 @@ extends Control
 @onready var gameselect: AudioStreamPlayer = $gameselect
 
 @onready var background: TextureRect = $background
-
+var selecting: bool = false
 var game:Array = []
 var corsor_pos_offset:Vector2 = Vector2(-20,100)
 var current_game_name:String = ""
 var select_time:float = 0.1
-
+var debug_game_number: int =0
+var game_number_debug:int = 0
+var roulette_minimum_debug:int = game.size() * 6
 #基本的にいじらなくても機能しますよ。
 #逆にいじるとセレクトがうまくいかなくなるよ
 func _ready() -> void:
@@ -29,16 +31,46 @@ func _ready() -> void:
 	current_game_name = game[0].name
 	print(cursor.global_position)
 	await SceneManager.transition_finished
-	select_game()
-
+	if Global.debug_mode == false:
+		select_game()
+	else:
+		gameselect.play()
+		selecting = true
 #基本的にいじらなくても機能しますよ。
 #逆にいじるとセレクトがうまくいかなくなるよ
 func _process(delta: float) -> void:
+	if Global.debug_mode:
+		$debugtext.visible=true
+	else:
+		$debugtext.visible=false
 	if current_game_name != game_name.text:
 		game_name.text = current_game_name
-	
-	if Input.is_action_just_pressed("enter"):
-		SceneStorage.change_scene("おとすな！！")
+	if selecting:
+		if Input.is_action_just_pressed("ui_left"):
+			game_number_debug -= 1
+			if game_number_debug < 0:
+				game_number_debug = game.size()-1
+		if Input.is_action_just_pressed("ui_right"):
+			game_number_debug += 1
+			if game_number_debug >= game.size():
+				game_number_debug = 0
+		cursor.global_position = game[game_number_debug].global_position + (game[game_number_debug].get_rect().size / 2) + corsor_pos_offset
+		current_game_name = game[game_number_debug].name
+		if Input.is_action_just_pressed("enter"):
+			selecting = false
+			create_tween().tween_property(background,"texture",game[game_number_debug].texture,0.5)
+			create_tween().tween_property(game_image,"modulate",Color("#ffffff00"),0.5)
+			create_tween().tween_property(cursor,"modulate",Color("#ffffff00"),0.5)
+			create_tween().tween_property(game_name,"position",Vector2(50,249),0.5)
+			await get_tree().create_timer(0.5).timeout
+			background.texture = game[game_number_debug].texture
+			background.modulate = "#ffffff"
+			create_tween().tween_property(game_name,"scale",Vector2(1.5,1.5),1.5)
+			await get_tree().create_timer(1.0).timeout
+			gameselect.stop()
+			SceneStorage.change_scene(game[game_number_debug].name)
+	#if Input.is_action_just_pressed("enter"):
+		#SceneStorage.change_scene("おとすな！！")
 
 #基本的にいじらなくても機能しますよ。
 #逆にいじるとセレクトがうまくいかなくなるよ
@@ -73,3 +105,6 @@ func select_game() -> void:
 	await get_tree().create_timer(1.0).timeout
 	gameselect.stop()
 	SceneStorage.change_scene(game[game_number].name)
+
+
+	
