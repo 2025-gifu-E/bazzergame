@@ -37,19 +37,19 @@ var power:float
 var rotate:Vector3
 
 var enter:bool = true
-var test:bool
+var impulse:bool
 
 var ok:bool
 
 
 func _ready() -> void:
+	impulse = false
 	ok = false
 	count.show()
 	clear.hide()
 	gameover.hide()
 	color_rect.hide()
 	color_rect.color = Color("#00000000")
-	test = false
 	power_bar.show()
 	rotation_pivot.hide()
 	rotation_pivot2.hide()
@@ -162,10 +162,10 @@ func _process(delta: float) -> void:
 		#_on_goal_body_entered(ball)
 	match states:
 		state.power:
+			if !enter:
+				return
 			enter = true
 			if Input.is_action_just_pressed("enter"):
-				if !enter:
-					return
 				animation_player.pause()
 				power = power_bar.value
 				enter = false
@@ -174,15 +174,16 @@ func _process(delta: float) -> void:
 				rotate_2_cam.priority = 0
 				result_cam.priority = 0
 				await get_tree().create_timer(0.3).timeout
+				enter = true
 				states = state.rotate
 				rotation_pivot.rotation_degrees.x = 75
 				animation_player.play("rotation")
 				rotation_pivot.show()
 		state.rotate:
+			if !enter:
+				return
 			enter = true
 			if Input.is_action_just_pressed("enter"):
-				if !enter:
-					return
 				animation_player.pause()
 				rotate.x = rotation_pivot.rotation.x
 				enter = false
@@ -191,22 +192,22 @@ func _process(delta: float) -> void:
 				rotate_2_cam.priority = 1
 				result_cam.priority = 0
 				await get_tree().create_timer(0.3).timeout
+				enter = true
 				states = state.rotate2
 				rotation_pivot2.rotation_degrees.y = 50
 				animation_player.play("rotation2")
 				rotation_pivot2.show()
 		state.rotate2:
+			if !enter:
+				return
 			enter = true
 			if Input.is_action_just_pressed("enter"):
-				if !enter:
-					return
 				animation_player.pause()
 				rotate.y = rotation_pivot2.rotation.y
 				power_cam.priority = 0
 				rotate_1_cam.priority = 0
 				rotate_2_cam.priority = 0
 				result_cam.priority = 1
-				enter = false
 				states = state.shoot
 		state.shoot:
 				states = state.finish
@@ -227,7 +228,9 @@ func _process(delta: float) -> void:
 				ball.set_sleeping(false)
 
 				# 中心にインパルスを適用してボールを飛ばす
-				ball.apply_central_impulse(shoot_direction.normalized() * shoot_force)
+				if !impulse:
+					ball.apply_central_impulse(shoot_direction.normalized() * shoot_force)
+					impulse = true
 
 
 func _on_goal_body_entered(body: Node3D) -> void:

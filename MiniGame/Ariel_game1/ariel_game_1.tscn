@@ -164,7 +164,7 @@ font_size = 100
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_147ej"]
 height = 0.5
-radius = 30.0
+radius = 100.0
 
 [node name="Ariel_game1" type="Node3D"]
 script = ExtResource("1_aveta")

@@ -28,7 +28,7 @@ func _ready() -> void:
 	cursor.global_position = game[0].global_position + (game[0].get_rect().size / 2) + corsor_pos_offset
 	current_game_name = game[0].name
 	print(cursor.global_position)
-	await SceneManager.transition_finished
+	#await SceneManager.transition_finished
 	select_game()
 
 #基本的にいじらなくても機能しますよ。
@@ -37,8 +37,8 @@ func _process(delta: float) -> void:
 	if current_game_name != game_name.text:
 		game_name.text = current_game_name
 	
-	#if Input.is_action_just_pressed("enter"):
-		#SceneStorage.change_scene("撃ち落とせ!!!!")
+	if Input.is_action_just_pressed("enter"):
+		SceneStorage.change_scene("ゴールに入れろ!!!!")
 
 #基本的にいじらなくても機能しますよ。
 #逆にいじるとセレクトがうまくいかなくなるよ
