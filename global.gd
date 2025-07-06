@@ -35,7 +35,7 @@ func _ready():
 	add_child(label)
 	label.size=Vector2(750,100)
 	label.position=Vector2(426,13)
-	label.text = "タイトルに戻っています..."
+	label.text = "タイトルに戻っています"
 	label.visible = false
 	label.add_theme_color_override("font_color", Color.RED)
 	label.add_theme_color_override("outline_color", Color.BLACK)
@@ -53,10 +53,16 @@ func _process(delta):
 		progress_bar.value = meter_value * 100
 		progress_bar.visible = true
 		label.visible=true
-
+		if meter_value >= 0.33 and meter_value <=0.66:
+			label.text = "タイトルに戻っています."
+		elif meter_value >=0.66 and meter_value <= 0.99:
+			label.text = "タイトルに戻っています.."
+		elif meter_value >= 0.99:
+			label.text = "タイトルに戻っています..."
 		if hold_timer >= hold_time and not triggered:
 			triggered = true
 			label.visible = true
+			
 			return_to_title()
 	else:
 		reset()
@@ -68,6 +74,7 @@ func reset():
 	progress_bar.visible = false
 	label.visible = false
 	triggered = false
+	label.text = "タイトルに戻っています"
 
 func return_to_title():
 	print("タイトルに戻ります")
