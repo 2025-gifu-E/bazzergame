@@ -6,15 +6,13 @@ var grid_state :Array= []              # 二次元配列 (bool)
 var grid_buttons:Array = []            # 二次元配列 (TextureButton)
 
 @onready var grid_container = $MarginContainer/GridContainer
-@onready var countdown_label = $startoverlay/countdown_time
+@onready var start = $CanvasLayer/startoverlay
 @onready var bgm: AudioStreamPlayer = $BGM
 
 var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")
 var waiting_for_next_scene = false
 func _ready() -> void:
 	bgm.play()
-	countdown_label.visible = true
-	countdown_label.text = "3"
 	grid_container.columns = GRID_SIZE
 	
 	for y in range(GRID_SIZE):
@@ -33,36 +31,12 @@ func _ready() -> void:
 		grid_buttons.append(row_buttons)
 	randomize_grid_state(random)
 	update_all_buttons()
-	start_countdown()
+	start.start_countdown()
 	
-
-func start_countdown()-> void:
-	# カウントダウンを順番に実行
-	await show_countdown("3",Color(0,1,0))
-	await show_countdown("2",Color(1,0.5,0))
-	await show_countdown("1",Color(1,0,0))
-	await show_countdown("スタート！",Color(1,0,0))
-	
-	$startoverlay.visible = false  # カウントダウン消す
-
+func _on_startoverlay_game_start()->  void:
 	# ゲーム開始
-	var tween = create_tween()
-	tween.tween_property($Theme,"position",Vector2(537,103),0.1).set_ease(Tween.EASE_OUT)
-	await tween.finished
 	grid_buttons[0][0].grab_focus()
 	$time.time_start()
-
-func show_countdown(text: String,color: Color) -> void:
-	countdown_label.text = text
-	countdown_label.add_theme_color_override("font_color",color)
-	countdown_label.scale = Vector2(0.5, 0.5)
-	
-	var tween:Tween = create_tween()
-	tween.tween_property(countdown_label, "scale", Vector2(1, 1), 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	await tween.finished
-	await get_tree().create_timer(0.5).timeout
-
-
 func _on_button_pressed(x: int, y: int)-> void:
 	toggle(x, y)
 	toggle(x - 1, y)
