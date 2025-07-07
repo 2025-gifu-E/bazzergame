@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xdm3i6oeq1aw"
-path="res://.godot/imported/clockbace.png-afbf66d7d78c4097cee9e9e0fc341931.ctex"
+path="res://.godot/imported/clockbace.png-ff4835a05181a8fba4700fd6efc4e29c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/timer_ui/clockbace.png"
-dest_files=["res://.godot/imported/clockbace.png-afbf66d7d78c4097cee9e9e0fc341931.ctex"]
+source_file="res://Template/timerui/clockbace.png"
+dest_files=["res://.godot/imported/clockbace.png-ff4835a05181a8fba4700fd6efc4e29c.ctex"]
 
 [params]
 

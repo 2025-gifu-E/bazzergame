@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4t7000giq7gn"
-path="res://.godot/imported/clockmeter.png-161bfa3d5f075c94c0a8bed9070cb34b.ctex"
+uid="uid://d4eclwsklpfjx"
+path="res://.godot/imported/mate_meter.png-f27126f6788aabb5b8ada97c8384ce39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/timer_ui/clockmeter.png"
-dest_files=["res://.godot/imported/clockmeter.png-161bfa3d5f075c94c0a8bed9070cb34b.ctex"]
+source_file="res://Template/timerui/mate_meter.png"
+dest_files=["res://.godot/imported/mate_meter.png-f27126f6788aabb5b8ada97c8384ce39.ctex"]
 
 [params]
 
