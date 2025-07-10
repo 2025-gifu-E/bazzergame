@@ -9,8 +9,8 @@ func _ready() -> void:
 		self.shot.connect(enemy._on_target_shot)
 func _process(delta: float) -> void:
 	var input_vecter:Vector2 = Input.get_vector(
-		"ui_left","ui_right",
-		"ui_up","ui_down"
+		"L_left","L_right",
+		"L_up","L_down"
 	)
 	if main.game_start:
 		position+= input_vecter*target_speed*control*delta
