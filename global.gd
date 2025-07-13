@@ -1,15 +1,14 @@
 extends CanvasLayer
 
 var debug_mode:bool = false
-
+const DEBUGTEXT = preload("res://TitleMenu/debugtext.tscn")
 var hold_time := 2.0
 var hold_timer := 0.0
 var meter_value := 0.0
 var triggered := false
-
 var progress_bar: TextureProgressBar
 var label: Label
-
+var det
 func _ready():
 	# メーター生成
 	progress_bar = TextureProgressBar.new()
@@ -41,8 +40,13 @@ func _ready():
 	label.add_theme_color_override("outline_color", Color.BLACK)
 	label.add_theme_constant_override("outline_size", 16)
 	label.add_theme_font_size_override("font_size",30)
-
+	det = DEBUGTEXT.instantiate()
+	add_child(det)
 func _process(delta):
+	if debug_mode and !is_in_title():
+		det.visible = true
+	else:
+		det.visible = false
 	if is_in_title():
 		reset()
 		return

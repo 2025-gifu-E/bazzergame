@@ -21,15 +21,6 @@ offset_bottom = 648.0
 texture = ExtResource("2_84ey6")
 expand_mode = 1
 
-[node name="curtain_L" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 576.0
-grow_vertical = 2
-color = Color(0.666667, 0, 0, 1)
-
 [node name="curtain_R" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
@@ -52,6 +43,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(576, 0)
+
+[node name="curtain_L" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 576.0
+grow_vertical = 2
+color = Color(0.666667, 0, 0, 1)
 
 [node name="start_text" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(750, 100)

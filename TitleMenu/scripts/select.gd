@@ -39,10 +39,6 @@ func _ready() -> void:
 #基本的にいじらなくても機能しますよ。
 #逆にいじるとセレクトがうまくいかなくなるよ
 func _process(delta: float) -> void:
-	if Global.debug_mode:
-		$debugtext.visible=true
-	else:
-		$debugtext.visible=false
 	if current_game_name != game_name.text:
 		game_name.text = current_game_name
 	if selecting:
