@@ -52,5 +52,6 @@ func _on_time_time_out() -> void:
 		get_tree().call_group("tamas","hide")
 		get_tree().call_group("ozyamato-kunns","queue_free")
 		timer.time_stop()
+		$CanvasLayer/gameoveroverlay.gameover_view()
 		await get_tree().create_timer(5.0).timeout
 		SceneManager.change_scene("res://TitleMenu/title.tscn",{"color":Color("#ffffff"),"speed":2.5})

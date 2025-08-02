@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	var input_vecter:Vector2 = Input.get_vector(
 		"L_left","L_right",
 		"L_up","L_down"
-	)
+	).normalized()
 	if main.game_start:
 		position+= input_vecter*target_speed*control*delta
 		

@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c47mltxarecv" path="res://TitleMenu/sprites/校舎の写真.png" id="2_wlfer"]
 [ext_resource type="PackedScene" uid="uid://ctenx7q2frbp6" path="res://Template/timerui/timer_ui.tscn" id="3_jei01"]
 [ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="4_jei01"]
-[ext_resource type="Texture2D" uid="uid://bnuq3x7bohpgx" path="res://TitleMenu/sprites/シャッター.webp" id="4_p5x1h"]
 [ext_resource type="AudioStream" uid="uid://des1t3hg11413" path="res://MiniGame/rangea_lightsout/audio/kosenwaribiki_game1.ogg" id="5_0cgsq"]
+[ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="5_jei01"]
 
 [node name="lightsout_main" type="Control"]
 layout_mode = 3
@@ -57,40 +57,7 @@ columns = 5
 [node name="startoverlay" parent="CanvasLayer" instance=ExtResource("4_jei01")]
 title_name = "つけろ!!!!"
 
-[node name="gameoveroverlay" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="shutter" type="TextureRect" parent="CanvasLayer/gameoveroverlay"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("4_p5x1h")
-expand_mode = 1
-
-[node name="gameoverlabel" type="Label" parent="CanvasLayer/gameoveroverlay"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -288.0
-offset_top = -32.5
-offset_right = 288.0
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 64
-text = "GAMEOVER!"
+[node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("5_jei01")]
 
 [node name="clearoverlay" type="Control" parent="."]
 visible = false

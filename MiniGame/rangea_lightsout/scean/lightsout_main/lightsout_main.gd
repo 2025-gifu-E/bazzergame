@@ -8,6 +8,7 @@ var grid_buttons:Array = []            # 二次元配列 (TextureButton)
 @onready var grid_container = $MarginContainer/GridContainer
 @onready var start = $CanvasLayer/startoverlay
 @onready var bgm: AudioStreamPlayer = $BGM
+@onready var gameoveroverlay: Control = $CanvasLayer/gameoveroverlay
 
 var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")
 var waiting_for_next_scene = false
@@ -94,15 +95,7 @@ func randomize_grid_state(count := 10)-> void:
 
 func _on_timer_timeout() -> void:
 	clear_focus_all()
-	$CanvasLayer/gameoveroverlay.visible = true
-	$CanvasLayer/gameoveroverlay.position.y = -self.size.y
-	$CanvasLayer/gameoveroverlay/gameoverlabel.rotation = 0.0
-	# Tweenで降りてくる
-	var tween = create_tween()
-	tween.tween_property($CanvasLayer/gameoveroverlay, "position:y", 0, 1.0).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	tween.tween_interval(0.1)
-	tween.tween_property($CanvasLayer/gameoveroverlay/gameoverlabel, "rotation", 0.1, 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	await tween.finished
+	gameoveroverlay.gameover_view()
 	await get_tree().create_timer(5.0).timeout
 	get_tree().change_scene_to_file("res://TitleMenu/title.tscn")
 	
