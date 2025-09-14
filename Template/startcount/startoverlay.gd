@@ -10,7 +10,9 @@ extends Control
 @export var after_position:Vector2 = Vector2(537,103)
 @export var after_size:int = 64
 @export var after_outline:int = 20
+@export var test:bool = false
 @onready var thema_moved: Label = $Thema_moved
+@onready var start_overlay: Control = $start_overlay
 
 var tite_size:int = 64
 var outline:int = 20
@@ -66,6 +68,14 @@ func _process(delta: float) -> void:
 		thema_moved.position = after_position
 		thema_moved.add_theme_font_size_override("font_size",after_size)
 		thema_moved.add_theme_constant_override("outline_size",after_outline)
+		if test:
+			start_overlay.visible = false
+			title.visible = false
+			thema_moved.modulate.a = 1.0
+		else:
+			start_overlay.visible = true
+			title.visible = true
+			thema_moved.modulate.a = 0.4
 	else:
 		thema_moved.visible = false
 		title.add_theme_font_size_override("font_size",tite_size)
