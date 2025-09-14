@@ -55,6 +55,7 @@ columns = 5
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="startoverlay" parent="CanvasLayer" instance=ExtResource("4_jei01")]
+mouse_filter = 2
 title_name = "つけろ!!!!"
 
 [node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("5_jei01")]

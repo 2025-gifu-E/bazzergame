@@ -96,6 +96,7 @@ target_speed = 1000.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="start_countdown" parent="CanvasLayer" instance=ExtResource("6_pcdvl")]
+mouse_filter = 2
 title_name = "撃ち落とせ!!!!"
 title_color = Color(0.188235, 0.188235, 0.188235, 1)
 after_position = Vector2(223, 90)

@@ -97,7 +97,7 @@ func _on_timer_timeout() -> void:
 	clear_focus_all()
 	gameoveroverlay.gameover_view()
 	await get_tree().create_timer(5.0).timeout
-	get_tree().change_scene_to_file("res://TitleMenu/title.tscn")
+	SceneManager.change_scene("res://TitleMenu/title.tscn",{"skip_fade_out":true,"skip_fade_in":true})
 	
 func clear_focus_all():
 	var focused = get_viewport().gui_get_focus_owner()

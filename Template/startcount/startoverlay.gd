@@ -1,3 +1,4 @@
+@tool
 extends Control
 @onready var countdown_label = $start_overlay/countdown_time
 @onready var title = $Theme
@@ -8,7 +9,8 @@ extends Control
 @export var title_slide:bool = true
 @export var after_position:Vector2 = Vector2(537,103)
 @export var after_size:int = 64
-@export var after_outline = 20
+@export var after_outline:int = 20
+@onready var thema_moved: Label = $Thema_moved
 
 var tite_size:int = 64
 var outline:int = 20
@@ -53,5 +55,18 @@ func show_countdown(text: String,color: Color) -> void:
 	await get_tree().create_timer(0.5).timeout
 
 func _process(delta: float) -> void:
-	title.add_theme_font_size_override("font_size",tite_size)
-	title.add_theme_constant_override("outline_size",outline)
+	title.text = title_name
+	title.add_theme_color_override("font_color",title_color)
+	title.add_theme_color_override("font_outline_color",Color(0,0,0)if outline_color_black else Color(1,1,1))
+	if Engine.is_editor_hint():
+		thema_moved.visible = true if title_slide else false
+		thema_moved.text = title_name
+		thema_moved.add_theme_color_override("font_color",title_color)
+		thema_moved.add_theme_color_override("font_outline_color",Color(0,0,0)if outline_color_black else Color(1,1,1))
+		thema_moved.position = after_position
+		thema_moved.add_theme_font_size_override("font_size",after_size)
+		thema_moved.add_theme_constant_override("outline_size",after_outline)
+	else:
+		thema_moved.visible = false
+		title.add_theme_font_size_override("font_size",tite_size)
+		title.add_theme_constant_override("outline_size",outline)
