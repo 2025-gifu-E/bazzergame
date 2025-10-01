@@ -9,11 +9,13 @@ func change_scene(game_name:String) -> void:
 		game_path = game_name
 	else:
 		match game_name:
-			"おとすな！！":#selectシーンで追加したtexturerectの名前をかこう
-				game_path = "res://TitleMenu/discription.tscn"#game_pathに説明画面のシーンを入れよう
-			"四角キャッチャー":
-				game_path = "res://MiniGame/SORIO_Game1/Scene/discription_SORIO_1.tscn"
-			"GameName3":
-				game_path = "res://TitleMenu/discription.tscn"
+			#selectシーンで追加したtexturerectの名前をかこう
+			#game_pathに説明画面のシーンを入れよう
+			"つけろ!!!!":
+				game_path = "res://MiniGame/rangea_lightsout/scean/discription/discription.tscn"
+			"撃ち落とせ!!!!":
+				game_path = "res://MiniGame/syoma_game1/discription.tscn"
+			"ゴールに入れろ!!!!":
+				game_path = "res://MiniGame/Ariel_game1/discription.tscn"
 
 	SceneManager.change_scene(game_path,{"color":Color("#000000"),"speed":2.0})

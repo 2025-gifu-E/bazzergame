@@ -6,8 +6,12 @@
 .DS_Store
 Thumbs.db
 
-# Godot metadata
-.godot/
+# UID管理は含める
+!.godot/uid_map.cfg
+
+# その他は無視
+.godot/editor/
+.godot/imported/
 
 # User-specific settings
 *.tmp
