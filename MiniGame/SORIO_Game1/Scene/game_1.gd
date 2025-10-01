@@ -12,7 +12,7 @@ extends Node2D
 
 const arm_max_angle:float = -40
 const arm_min_angle:float = -10
-const Hit:int = 100
+const Hit:int = 25
 var Crane_Pos:Vector2
 var Mover:float = 20
 var Random:int
