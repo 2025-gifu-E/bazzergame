@@ -9,9 +9,9 @@ func _ready() -> void:
 		self.shot.connect(enemy._on_target_shot)
 func _process(delta: float) -> void:
 	var input_vecter:Vector2 = Input.get_vector(
-		"ui_left","ui_right",
-		"ui_up","ui_down"
-	)
+		"L_left","L_right",
+		"L_up","L_down"
+	).normalized()
 	if main.game_start:
 		position+= input_vecter*target_speed*control*delta
 		
@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 		position.x = clamp(position.x,0,screen_size.x)
 		position.y = clamp(position.y,0,screen_size.y)
 		if Input.is_action_just_pressed("enter"):
-			print("shot")
 			shot.emit()
 		if Input.is_action_pressed("B"):
 			control = 0.5

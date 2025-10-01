@@ -4,7 +4,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o3yy8"]
 height = 0.5
-radius = 1.0
+radius = 0.908691
 
 [node name="goal" type="Area3D"]
 

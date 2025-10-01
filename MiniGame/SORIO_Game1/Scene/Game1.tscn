@@ -1,0 +1,261 @@
+[gd_scene load_steps=30 format=3 uid="uid://c86xnlfnx7snq"]
+
+[ext_resource type="Script" uid="uid://cxtwpcplg803l" path="res://MiniGame/SORIO_Game1/Scene/game_1.gd" id="1_irdhl"]
+[ext_resource type="Texture2D" uid="uid://dl1kalm5dilmi" path="res://MiniGame/SORIO_Game1/Texture/kure-nn.png" id="1_vnhsg"]
+[ext_resource type="Texture2D" uid="uid://b36coewt1vsjg" path="res://MiniGame/SORIO_Game1/Texture/bg_abstract1_blue.png" id="3_27dxc"]
+[ext_resource type="AudioStream" uid="uid://dedcm3krjf0sg" path="res://MiniGame/SORIO_Game1/Texture/kosenwaribiki_game1.ogg" id="4_yu7g2"]
+[ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="5_majgu"]
+[ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="6_0ee0e"]
+[ext_resource type="PackedScene" uid="uid://cckct2bpyltp4" path="res://Template/clearoverlay/clearoverlay.tscn" id="7_t28mm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_812pr"]
+size = Vector2(800, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lmsjk"]
+size = Vector3(80, 5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msp8a"]
+size = Vector2(50, 650)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ev2q"]
+size = Vector3(5, 65, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cl3tv"]
+size = Vector2(50, 650)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3rrad"]
+size = Vector3(5, 65, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeyrw"]
+size = Vector2(50, 300)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vnhsg"]
+size = Vector3(5, 30, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irdhl"]
+size = Vector2(100, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnhsg"]
+size = Vector2(50, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_irdhl"]
+size = Vector3(50, 10, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu7g2"]
+size = Vector2(10, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_majgu"]
+size = Vector3(10, 50, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_27dxc"]
+size = Vector3(20, 1000, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_irdhl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t28mm"]
+size = Vector2(70, 70)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e0k23"]
+size = Vector3(70, 70, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ee0e"]
+size = Vector2(70, 70)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t28mm"]
+size = Vector3(70, 70, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27dxc"]
+size = Vector2(70, 70)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yu7g2"]
+size = Vector3(70, 70, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0k23"]
+size = Vector2(150, 94)
+
+[node name="Game1" type="Node2D"]
+script = ExtResource("1_irdhl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-100, 300)
+shape = SubResource("RectangleShape2D_812pr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D"]
+scale = Vector2(10, 10)
+mesh = SubResource("BoxMesh_lmsjk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-500, 0)
+shape = SubResource("RectangleShape2D_msp8a")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D2"]
+scale = Vector2(10, 10)
+mesh = SubResource("BoxMesh_8ev2q")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_cl3tv")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D3"]
+scale = Vector2(10, 10)
+mesh = SubResource("BoxMesh_3rrad")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(300, 175)
+shape = SubResource("RectangleShape2D_yeyrw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D4"]
+scale = Vector2(10, 10)
+mesh = SubResource("BoxMesh_vnhsg")
+
+[node name="UFO" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO"]
+position = Vector2(0, -250)
+shape = SubResource("RectangleShape2D_irdhl")
+
+[node name="Sprite2D" type="Sprite2D" parent="UFO/CollisionShape2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_vnhsg")
+
+[node name="left_arm" type="CharacterBody2D" parent="UFO/CollisionShape2D"]
+position = Vector2(-25, 10)
+rotation = -0.989602
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO/CollisionShape2D/left_arm"]
+z_index = -2
+position = Vector2(-30, 0)
+shape = SubResource("RectangleShape2D_vnhsg")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/left_arm/CollisionShape2D"]
+mesh = SubResource("BoxMesh_irdhl")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="UFO/CollisionShape2D/left_arm"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO/CollisionShape2D/left_arm/CharacterBody2D"]
+z_index = -2
+position = Vector2(-55, 20)
+shape = SubResource("RectangleShape2D_yu7g2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/left_arm/CharacterBody2D/CollisionShape2D"]
+mesh = SubResource("BoxMesh_majgu")
+
+[node name="right_arm" type="CharacterBody2D" parent="UFO/CollisionShape2D"]
+position = Vector2(25, 10)
+rotation = 0.401426
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO/CollisionShape2D/right_arm"]
+z_index = -2
+position = Vector2(30, 0)
+shape = SubResource("RectangleShape2D_vnhsg")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/right_arm/CollisionShape2D"]
+mesh = SubResource("BoxMesh_irdhl")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="UFO/CollisionShape2D/right_arm"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO/CollisionShape2D/right_arm/CharacterBody2D"]
+z_index = -2
+position = Vector2(55, 20)
+shape = SubResource("RectangleShape2D_yu7g2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D/right_arm/CharacterBody2D/CollisionShape2D"]
+mesh = SubResource("BoxMesh_majgu")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UFO/CollisionShape2D"]
+position = Vector2(0, -520)
+mesh = SubResource("BoxMesh_27dxc")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2(0, 240)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_irdhl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(-150, 0)
+shape = SubResource("RectangleShape2D_t28mm")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D3/CollisionShape2D3"]
+self_modulate = Color(1.2514e-06, 0.726828, 0.506479, 1)
+mesh = SubResource("BoxMesh_e0k23")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2(0, 240)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_irdhl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D4"]
+position = Vector2(-300, 0)
+shape = SubResource("RectangleShape2D_0ee0e")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D4/CollisionShape2D4"]
+self_modulate = Color(1, 0.737255, 0, 1)
+mesh = SubResource("BoxMesh_t28mm")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="."]
+position = Vector2(0, 240)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_irdhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
+shape = SubResource("RectangleShape2D_27dxc")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D5/CollisionShape2D"]
+self_modulate = Color(0, 0.647059, 1, 1)
+mesh = SubResource("BoxMesh_yu7g2")
+
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(356, 230)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+position = Vector2(44, 48)
+shape = SubResource("RectangleShape2D_e0k23")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+self_modulate = Color(1, 1, 1, 0.470588)
+z_index = -15
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -595.0
+offset_top = -346.0
+offset_right = 559.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_27dxc")
+expand_mode = 1
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yu7g2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="start_countdown" parent="CanvasLayer" instance=ExtResource("5_majgu")]
+title_name = "取れ!!!!"
+title_color = Color(0, 0.662745, 1, 1)
+after_position = Vector2(115, 10)
+after_size = 32
+after_outline = 10
+
+[node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("6_0ee0e")]
+
+[node name="clearoverlay" parent="CanvasLayer" instance=ExtResource("7_t28mm")]
+visible = false
+use_score = false
+
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
+[connection signal="game_start" from="CanvasLayer/start_countdown" to="." method="_on_start_countdown_game_start"]
