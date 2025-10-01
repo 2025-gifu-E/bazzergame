@@ -5,12 +5,14 @@ extends Node2D
 @onready var rigid_body_2d: RigidBody2D = $RigidBody2D
 @onready var start_countdown: Control = $CanvasLayer/start_countdown
 @onready var gameoveroverlay: Control = $CanvasLayer/gameoveroverlay
+@onready var clearoverlay: Control = $CanvasLayer/clearoverlay
+
 
 
 
 const arm_max_angle:float = -40
 const arm_min_angle:float = -10
-const Hit:int = 25
+const Hit:int = 100
 var Crane_Pos:Vector2
 var Mover:float = 20
 var Random:int
@@ -100,19 +102,4 @@ func _on_goal_body_entered(body: Node2D) -> void:
 	if body is RigidBody2D:
 		gameclear = true
 		await get_tree().create_timer(0.5).timeout
-		$CanvasLayer/clearoverlay.visible = true
-		$CanvasLayer/clearoverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
-		$CanvasLayer/clearoverlay.create_tween().tween_property($CanvasLayer/clearoverlay, "modulate:a", 1, 1.0)
-		var return_button:Button = $CanvasLayer/clearoverlay/VBoxContainer/MarginContainer/titlebutton
-		return_button.visible = true
-		await get_tree().process_frame
-		return_button.grab_focus()
-		start_button_blink()
-func start_button_blink():
-	var tween:Tween = create_tween().set_loops()
-	tween.tween_property($CanvasLayer/clearoverlay/VBoxContainer/MarginContainer/titlebutton, "modulate:a", 0.3, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property($CanvasLayer/clearoverlay/VBoxContainer/MarginContainer/titlebutton, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-
-func _on_titlebutton_pressed() -> void:
-	SceneManager.change_scene("res://TitleMenu/title.tscn",{"color":Color("#ffffff"),"speed":2.5})
+		clearoverlay.clear_view()

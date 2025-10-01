@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dgyp5frqgt80u"]
+[gd_scene load_steps=38 format=3 uid="uid://dgyp5frqgt80u"]
 
 [ext_resource type="Script" uid="uid://csjp6d5q7v0f4" path="res://MiniGame/Ariel_game1/ariel_game_1.gd" id="1_aveta"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_i7tfx"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://br5bj1g21alu" path="res://MiniGame/Ariel_game1/kosenwaribiki_game1.ogg" id="5_c6d0v"]
 [ext_resource type="Texture2D" uid="uid://dl2qk0oxolegg" path="res://MiniGame/Ariel_game1/grass_block_texture-grass-field.jpg" id="7_147ej"]
 [ext_resource type="Texture2D" uid="uid://b8qb666dyx56h" path="res://MiniGame/Ariel_game1/grass_block_texture-grass-field_n.jpg" id="8_xb21v"]
+[ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="9_xb21v"]
+[ext_resource type="PackedScene" uid="uid://cckct2bpyltp4" path="res://Template/clearoverlay/clearoverlay.tscn" id="10_f14c0"]
+[ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="11_yfrov"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aveta"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -309,6 +312,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="clear" type="RichTextLabel" parent="ui"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -330,29 +334,8 @@ text = "CLEAR!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="gameover" type="RichTextLabel" parent="ui"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -517.0
-offset_top = -324.0
-offset_right = 517.0
-offset_bottom = -178.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/normal_font_size = 80
-bbcode_enabled = true
-text = "GAMEOVER!!!!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ColorRect" type="ColorRect" parent="ui"]
+visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -382,6 +365,20 @@ theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="start_countdown" parent="ui" instance=ExtResource("11_yfrov")]
+layout_mode = 1
+title_name = "入れろ!!!!"
+title_color = Color(0.216667, 1, 0, 1)
+after_position = Vector2(700, 0)
+
+[node name="clearoverlay" parent="ui" instance=ExtResource("10_f14c0")]
+visible = false
+layout_mode = 1
+use_score = false
+
+[node name="gameoveroverlay" parent="ui" instance=ExtResource("9_xb21v")]
+layout_mode = 1
+
 [node name="gameover" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
 
@@ -391,4 +388,5 @@ shape = SubResource("CylinderShape3D_147ej")
 [connection signal="body_entered" from="goal" to="." method="_on_goal_body_entered"]
 [connection signal="body_entered" from="goal2" to="." method="_on_goal_body_entered"]
 [connection signal="body_entered" from="goal3" to="." method="_on_goal_body_entered"]
+[connection signal="game_start" from="ui/start_countdown" to="." method="_game_start"]
 [connection signal="body_entered" from="gameover" to="." method="_on_gameover_body_entered"]

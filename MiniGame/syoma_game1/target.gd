@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 		position.x = clamp(position.x,0,screen_size.x)
 		position.y = clamp(position.y,0,screen_size.y)
 		if Input.is_action_just_pressed("enter"):
-			print("shot")
 			shot.emit()
 		if Input.is_action_pressed("B"):
 			control = 0.5

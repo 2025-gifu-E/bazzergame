@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://o1djmb642hey"]
+[gd_scene load_steps=12 format=3 uid="uid://o1djmb642hey"]
 
 [ext_resource type="Script" uid="uid://yvft51oork20" path="res://MiniGame/syoma_game1/mainn.gd" id="1_biu26"]
 [ext_resource type="PackedScene" uid="uid://y2vswf1n3gno" path="res://MiniGame/syoma_game1/tamakun.tscn" id="1_ie5t8"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://des1t3hg11413" path="res://MiniGame/rangea_lightsout/audio/kosenwaribiki_game1.ogg" id="6_3jfug"]
 [ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="6_pcdvl"]
 [ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="7_eb6kk"]
+[ext_resource type="PackedScene" uid="uid://cckct2bpyltp4" path="res://Template/clearoverlay/clearoverlay.tscn" id="8_gdgh6"]
 
 [sub_resource type="Theme" id="Theme_p0awb"]
 default_font_size = 50
@@ -103,6 +104,9 @@ after_size = 24
 after_outline = 10
 
 [node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("7_eb6kk")]
+
+[node name="clearoverlay" parent="CanvasLayer" instance=ExtResource("8_gdgh6")]
+visible = false
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3jfug")

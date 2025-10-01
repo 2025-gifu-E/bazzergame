@@ -5,6 +5,7 @@ extends Node2D
 @onready var _lavel2 = $gameover
 @onready var target = $target
 @onready var title = $CanvasLayer/start_countdown
+@onready var clearoverlay: Control = $CanvasLayer/clearoverlay
 
 @onready var bgm: AudioStreamPlayer = $BGM
 
@@ -33,14 +34,14 @@ func _process(delta: float) -> void:
 		if "Tamakun" in child.name:
 			cnt += 1
 	if game_start and gameover==false and gameclear==false and cnt == 0:
+		var remaining_time:float = timer.time_left()
+		clearoverlay.score = str(20-int(remaining_time))
 		gameclear = true
-		_label.visible = true
 		target.visible = false
 		timer.time_stop()
 		for enemy in get_tree().get_nodes_in_group("tamas"):
 			enemy.queue_free()
-		await get_tree().create_timer(5.0).timeout
-		SceneManager.change_scene("res://TitleMenu/title.tscn",{"color":Color("#ffffff"),"speed":2.5})
+		clearoverlay.clear_view()
 
 func _on_time_time_out() -> void:
 	if gameclear == false and game_start:

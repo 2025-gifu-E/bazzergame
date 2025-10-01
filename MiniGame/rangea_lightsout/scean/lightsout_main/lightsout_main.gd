@@ -9,6 +9,7 @@ var grid_buttons:Array = []            # 二次元配列 (TextureButton)
 @onready var start = $CanvasLayer/startoverlay
 @onready var bgm: AudioStreamPlayer = $BGM
 @onready var gameoveroverlay: Control = $CanvasLayer/gameoveroverlay
+@onready var clearoverlay: Control = $clearoverlay
 
 var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")
 var waiting_for_next_scene = false
@@ -62,21 +63,9 @@ func check_clear()-> void:
 	print("ゲームクリア！")
 	#clear_focus_all()
 	var remaining_time:float = $time.time_left()
-	$clearoverlay/VBoxContainer/cleartime.text ="クリアタイム:"+str(20-int(remaining_time))+"秒"
+	clearoverlay.score = str(20-int(remaining_time))
 	$time.time_stop()
-	$clearoverlay.visible = true
-	$clearoverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
-	$clearoverlay.create_tween().tween_property($clearoverlay, "modulate:a", 1, 1.0)
-	
-	var return_button:Button = $clearoverlay/VBoxContainer/MarginContainer/titlebutton
-	return_button.visible = true
-	await get_tree().process_frame
-	return_button.grab_focus()
-	start_button_blink()
-func start_button_blink():
-	var tween:Tween = create_tween().set_loops()
-	tween.tween_property($clearoverlay/VBoxContainer/MarginContainer/titlebutton, "modulate:a", 0.3, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property($clearoverlay/VBoxContainer/MarginContainer/titlebutton, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	clearoverlay.clear_view()
 func randomize_grid_state(count := 10)-> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -104,8 +93,3 @@ func clear_focus_all():
 	if focused != null:
 		focused.release_focus()
 	# さらに明示的に Viewport 全体のフォーカス無効にする
-
-
-func _on_titlebutton_pressed() -> void:
-	print("modoru")
-	SceneManager.change_scene("res://TitleMenu/title.tscn",{"color":Color("#ffffff"),"speed":2.5})

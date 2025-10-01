@@ -19,9 +19,13 @@ extends Node3D
 @onready var goal_3: Area3D = $goal3
 
 @onready var clear: RichTextLabel = $ui/clear
-@onready var gameover: RichTextLabel = $ui/gameover
-@onready var color_rect: ColorRect = $ui/ColorRect
+@onready var gameoveroverlay: Control = $ui/gameoveroverlay
+@onready var clearoverlay: Control = $ui/clearoverlay
+
+
 @onready var count: Label = $ui/count
+@onready var start_countdown: Control = $ui/start_countdown
+
 
 enum state{
 	power,
@@ -46,9 +50,6 @@ func _ready() -> void:
 	ok = false
 	count.show()
 	clear.hide()
-	gameover.hide()
-	color_rect.hide()
-	color_rect.color = Color("#00000000")
 	test = false
 	power_bar.show()
 	rotation_pivot.hide()
@@ -65,18 +66,9 @@ func _ready() -> void:
 
 	goal_set()
 	
-	await SceneManager.transition_finished
-	count.text = "3"
-	await get_tree().create_timer(1.0).timeout
-	count.text = "2"
-	await get_tree().create_timer(1.0).timeout
-	count.text = "1"
-	await get_tree().create_timer(1.0).timeout
-	count.text = "START"
-	await get_tree().create_timer(1.0).timeout
+	start_countdown.start_countdown()
+func _game_start() -> void:
 	ok = true
-	count.hide()
-
 func goal_set() -> void:
 	# 各ゴールのランダムな移動範囲を定義
 	var x_min: float = -7.5
@@ -231,21 +223,12 @@ func _process(delta: float) -> void:
 
 
 func _on_goal_body_entered(body: Node3D) -> void:
-	color_rect.show()
-	create_tween().tween_property(color_rect,"color",Color("#0000006d"),1.0)
+
 	await get_tree().create_timer(1.0).timeout
-	clear.show()
-	await get_tree().create_timer(3.0).timeout
-	SceneManager.change_scene("res://TitleMenu/title.tscn")
+	clearoverlay.clear_view()
 
 func _on_gameover_body_entered(body: Node3D) -> void:
-	color_rect.show()
-	create_tween().tween_property(color_rect,"color",Color("#0000006d"),1.0)
 	await get_tree().create_timer(1.0).timeout
-	gameover.show()
-	var tween = create_tween()
-	tween.tween_property(gameover, "position:y", 251, 1.0).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	tween.tween_interval(0.1)
-	tween.tween_property(gameover, "rotation", 0.1, 0.1).set_ease(Tween.EASE_OUT)
+	gameoveroverlay.gameover_view()
 	await get_tree().create_timer(3.0).timeout
 	SceneManager.change_scene("res://TitleMenu/title.tscn")
