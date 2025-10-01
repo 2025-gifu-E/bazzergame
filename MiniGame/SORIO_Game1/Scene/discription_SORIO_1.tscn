@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://odvoajrhkqpp" path="res://TitleMenu/sprites/ui3-b.png" id="6_y8xgj"]
 [ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="7_8dvgj"]
 [ext_resource type="Texture2D" uid="uid://cpn7ayruvuf41" path="res://TitleMenu/sprites/ui3-a.png" id="8_jy1ya"]
-[ext_resource type="Texture2D" uid="uid://btks2syovcprw" path="res://TitleMenu/sprites/スクリーンショット 2024-10-26 112119.png" id="9_rbqmx"]
+[ext_resource type="Texture2D" uid="uid://dyubl8g053is7" path="res://MiniGame/SORIO_Game1/Texture/jacket.png" id="9_31vma"]
 [ext_resource type="AudioStream" uid="uid://dep0uk4r57hh7" path="res://TitleMenu/Logic&Contradiction.ogg" id="10_rxj3x"]
 
 [node name="discription" type="Control"]
@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 10
 [node name="game_name" type="Label" parent="flavortext_background/MarginContainer/gamename_background/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "四角キャッチャー"
+text = "取れ!!!!"
 horizontal_alignment = 1
 
 [node name="timer_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]
@@ -170,7 +170,7 @@ layout_mode = 2
 [node name="プレイ映像" type="TextureRect" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-texture = ExtResource("9_rbqmx")
+texture = ExtResource("9_31vma")
 expand_mode = 1
 stretch_mode = 4
 

@@ -3,7 +3,8 @@ extends Node2D
 @onready var left_arm: CharacterBody2D = $UFO/CollisionShape2D/left_arm
 @onready var right_arm: CharacterBody2D = $UFO/CollisionShape2D/right_arm
 @onready var rigid_body_2d: RigidBody2D = $RigidBody2D
-
+@onready var start_countdown: Control = $CanvasLayer/start_countdown
+@onready var gameoveroverlay: Control = $CanvasLayer/gameoveroverlay
 
 
 
@@ -13,7 +14,9 @@ const Hit:int = 25
 var Crane_Pos:Vector2
 var Mover:float = 20
 var Random:int
-
+var can_play:bool = false
+var gameover:bool = false
+var gameclear:bool = false
 enum Crane {
 	Move,Down,Close,Up,Go,Open,End
 }
@@ -24,6 +27,8 @@ func _ready() -> void:
 	left_arm.rotation_degrees = arm_min_angle
 	right_arm.rotation_degrees = arm_min_angle * -1
 	ufo.position = Vector2(0,-250)
+	start_countdown.start_countdown()
+	$BGM.play()
 
 func _physics_process(delta: float) -> void:
 	match GameFlow:
@@ -33,7 +38,7 @@ func _physics_process(delta: float) -> void:
 			if(Crane_Pos.x >= 400):
 				Mover = -20
 			Crane_Pos.x += Mover
-			if(Input.is_action_just_pressed("enter")):
+			if(Input.is_action_just_pressed("enter") and can_play):
 				GameFlow = Crane.Down
 		
 		Crane.Down:
@@ -70,6 +75,44 @@ func _physics_process(delta: float) -> void:
 			create_tween().tween_property(left_arm,"rotation_degrees",arm_min_angle,0.4)
 			create_tween().tween_property(right_arm,"rotation_degrees",arm_min_angle * -1,0.4)
 			await get_tree().create_timer(1).timeout
-			GameFlow = Crane.Move
+			GameFlow = Crane.End
+		Crane.End:
+			await get_tree().create_timer(1.5).timeout
+			if gameclear: return
+			if not gameover:_game_over()
+			gameover = true
+		
+			
 		
 	ufo.position = Crane_Pos
+
+
+func _on_start_countdown_game_start() -> void:
+	can_play = true
+
+func _game_over() -> void:
+	gameoveroverlay.gameover_view()
+	await get_tree().create_timer(5.0).timeout
+	SceneManager.change_scene("res://TitleMenu/title.tscn",{"skip_fade_out":true,"skip_fade_in":true})
+
+
+func _on_goal_body_entered(body: Node2D) -> void:
+	if body is RigidBody2D:
+		gameclear = true
+		await get_tree().create_timer(0.5).timeout
+		$CanvasLayer/clearoverlay.visible = true
+		$CanvasLayer/clearoverlay.modulate = Color(1, 1, 1, 0)  # 透明にしておく
+		$CanvasLayer/clearoverlay.create_tween().tween_property($CanvasLayer/clearoverlay, "modulate:a", 1, 1.0)
+		var return_button:Button = $CanvasLayer/clearoverlay/VBoxContainer/MarginContainer/titlebutton
+		return_button.visible = true
+		await get_tree().process_frame
+		return_button.grab_focus()
+		start_button_blink()
+func start_button_blink():
+	var tween:Tween = create_tween().set_loops()
+	tween.tween_property($CanvasLayer/clearoverlay/VBoxContainer/MarginContainer/titlebutton, "modulate:a", 0.3, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property($CanvasLayer/clearoverlay/VBoxContainer/MarginContainer/titlebutton, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+func _on_titlebutton_pressed() -> void:
+	SceneManager.change_scene("res://TitleMenu/title.tscn",{"color":Color("#ffffff"),"speed":2.5})

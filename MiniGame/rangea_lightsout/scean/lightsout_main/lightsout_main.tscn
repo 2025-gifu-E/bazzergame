@@ -56,7 +56,6 @@ columns = 5
 
 [node name="startoverlay" parent="CanvasLayer" instance=ExtResource("4_jei01")]
 title_name = "つけろ!!!!"
-test = null
 
 [node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("5_jei01")]
 

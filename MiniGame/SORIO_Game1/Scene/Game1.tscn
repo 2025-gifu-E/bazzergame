@@ -1,8 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://c86xnlfnx7snq"]
+[gd_scene load_steps=29 format=3 uid="uid://c86xnlfnx7snq"]
 
 [ext_resource type="Script" uid="uid://cxtwpcplg803l" path="res://MiniGame/SORIO_Game1/Scene/game_1.gd" id="1_irdhl"]
 [ext_resource type="Texture2D" uid="uid://dl1kalm5dilmi" path="res://MiniGame/SORIO_Game1/Texture/kure-nn.png" id="1_vnhsg"]
 [ext_resource type="Texture2D" uid="uid://b36coewt1vsjg" path="res://MiniGame/SORIO_Game1/Texture/bg_abstract1_blue.png" id="3_27dxc"]
+[ext_resource type="AudioStream" uid="uid://dedcm3krjf0sg" path="res://MiniGame/SORIO_Game1/Texture/kosenwaribiki_game1.ogg" id="4_yu7g2"]
+[ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="5_majgu"]
+[ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="6_0ee0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_812pr"]
 size = Vector2(800, 50)
@@ -65,6 +68,9 @@ size = Vector2(70, 70)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yu7g2"]
 size = Vector3(70, 70, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0k23"]
+size = Vector2(150, 94)
 
 [node name="Game1" type="Node2D"]
 script = ExtResource("1_irdhl")
@@ -201,6 +207,13 @@ shape = SubResource("RectangleShape2D_27dxc")
 self_modulate = Color(0, 0.647059, 1, 1)
 mesh = SubResource("BoxMesh_yu7g2")
 
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(356, 230)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+position = Vector2(44, 48)
+shape = SubResource("RectangleShape2D_e0k23")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -224,3 +237,81 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_27dxc")
 expand_mode = 1
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yu7g2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="start_countdown" parent="CanvasLayer" instance=ExtResource("5_majgu")]
+title_name = "取れ!!!!"
+title_color = Color(0, 0.662745, 1, 1)
+after_position = Vector2(115, 10)
+after_size = 32
+after_outline = 10
+
+[node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("6_0ee0e")]
+
+[node name="clearoverlay" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/clearoverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/clearoverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -55.0
+offset_right = 226.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="clearlabel" type="Label" parent="CanvasLayer/clearoverlay/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.976471, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "ゲームクリア!"
+
+[node name="cleartime" type="Label" parent="CanvasLayer/clearoverlay/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "クリアタイム:12秒"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/clearoverlay/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="titlebutton" type="Button" parent="CanvasLayer/clearoverlay/VBoxContainer/MarginContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Aボタンで戻る"
+flat = true
+
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
+[connection signal="game_start" from="CanvasLayer/start_countdown" to="." method="_on_start_countdown_game_start"]
+[connection signal="pressed" from="CanvasLayer/clearoverlay/VBoxContainer/MarginContainer/titlebutton" to="." method="_on_titlebutton_pressed"]
