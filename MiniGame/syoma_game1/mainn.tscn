@@ -106,7 +106,6 @@ after_outline = 10
 [node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("7_eb6kk")]
 
 [node name="clearoverlay" parent="CanvasLayer" instance=ExtResource("8_gdgh6")]
-visible = false
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3jfug")

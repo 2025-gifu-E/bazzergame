@@ -14,11 +14,11 @@
 シグナルの`time_out()`に接続してタイマー終了を検知できます。  
 ここにゲームオーバーの処理などを書きましょう。  
 ### インスペクター設定
-|インスペクター名|説明|
-|---|---|
-|Time Limit|残り時間|
-|Change Value Color|残り時間の色が変化するか|
-|Meter Color|メーターの色を変更します。|
-|Meter Gradation|メーターの色が残り時間に応じて変化します。<br>オンの間はMeter Colorが無効になります。|
-|Start Color|開始時の色|
-|End Color|終了時の色|
+|インスペクター名|型|説明|
+|---|--|---|
+|Time Limit|float|残り時間|
+|Change Value Color|bool|残り時間の色が変化するか|
+|Meter Color|Color|メーターの色を変更します。|
+|Meter Gradation|bool|メーターの色が残り時間に応じて変化します。<br>オンの間はMeter Colorが無効になります。|
+|Start Color|Color|開始時の色|
+|End Color|Color|終了時の色|

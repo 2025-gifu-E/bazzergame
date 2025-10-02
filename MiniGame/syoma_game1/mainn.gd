@@ -45,7 +45,6 @@ func _process(delta: float) -> void:
 
 func _on_time_time_out() -> void:
 	if gameclear == false and game_start:
-		_lavel2.visible = true
 		target.visible = false
 		gameover = true
 		for enemy in get_tree().get_nodes_in_group("tamas"):

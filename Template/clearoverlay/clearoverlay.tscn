@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://di85mgbq5343p" path="res://Template/clearoverlay/clearoverlay.gd" id="1_x36xs"]
 
 [node name="clearoverlay" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

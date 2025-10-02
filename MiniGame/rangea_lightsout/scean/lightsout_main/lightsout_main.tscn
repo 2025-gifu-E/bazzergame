@@ -61,7 +61,6 @@ title_name = "つけろ!!!!"
 [node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("5_jei01")]
 
 [node name="clearoverlay" parent="." instance=ExtResource("6_p404l")]
-visible = false
 layout_mode = 1
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]

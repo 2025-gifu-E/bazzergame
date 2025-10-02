@@ -254,7 +254,6 @@ after_outline = 10
 [node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("6_0ee0e")]
 
 [node name="clearoverlay" parent="CanvasLayer" instance=ExtResource("7_t28mm")]
-visible = false
 use_score = false
 
 [connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
