@@ -102,7 +102,7 @@ func select_game() -> void:
 	create_tween().tween_property(game_name,"scale",Vector2(1.5,1.5),1.5)
 	await get_tree().create_timer(1.0).timeout
 	gameselect.stop()
-	game[game_number].change_scene()
+	game[game_number].change_scean()
 	#SceneStorage.change_scene(game[game_number].name)
 
 
