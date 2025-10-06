@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DiscriptionData" load_steps=4 format=3 uid="uid://bq61tios50ub"]
+
+[ext_resource type="PackedScene" uid="uid://cd0c126hdcyil" path="res://MiniGame/rangea_lightsout/scean/lightsout_main/lightsout_main.tscn" id="1_fg221"]
+[ext_resource type="Texture2D" uid="uid://c8gratyea5f4o" path="res://MiniGame/rangea_lightsout/assets/thumnail/スクリーンショット 2025-06-18 231433.png" id="2_5leyk"]
+[ext_resource type="Script" uid="uid://bxthvjhxeac7k" path="res://TitleMenu/scripts/discription_data.gd" id="3_2c686"]
+
+[resource]
+script = ExtResource("3_2c686")
+name = "つけろ!!!"
+screanshot = ExtResource("2_5leyk")
+Scean = ExtResource("1_fg221")
+how_to_oparate = "ボタンを選択してAで反転
+簡単だね"
+gema_explanation = "ライツアウトだよ。
+選択したボタンと周囲のボタン
+が反転して
+全部点灯(水色)させたら
+クリア"
+metadata/_custom_type_script = "uid://bxthvjhxeac7k"

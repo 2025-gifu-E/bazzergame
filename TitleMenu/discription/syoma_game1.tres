@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DiscriptionData" load_steps=4 format=3 uid="uid://c712nbedq3l7t"]
+
+[ext_resource type="Script" uid="uid://bxthvjhxeac7k" path="res://TitleMenu/scripts/discription_data.gd" id="1_mewu8"]
+[ext_resource type="PackedScene" uid="uid://o1djmb642hey" path="res://MiniGame/syoma_game1/mainn.tscn" id="1_rp00g"]
+[ext_resource type="Texture2D" uid="uid://cvmulw6601403" path="res://MiniGame/syoma_game1/スクリーンショット 2025-06-21 125904.png" id="2_3blk1"]
+
+[resource]
+script = ExtResource("1_mewu8")
+name = "叩き落せ!!!!"
+screanshot = ExtResource("2_3blk1")
+Scean = ExtResource("1_rp00g")
+how_to_oparate = "右スティックで操作
+Aボタンで撃破
+YボタンまたはLボタンで加速
+Bボタンで減速"
+gema_explanation = "制限時間以内に丸を全部
+撃ち落とせ
+四角を落ち落とすと
+即ゲームオーバーだから
+気をつけろ"
+metadata/_custom_type_script = "uid://bxthvjhxeac7k"

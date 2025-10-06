@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://b4gt500d33nt8"]
 
-[ext_resource type="Script" uid="uid://bnty3l5v678px" path="res://TitleMenu/discription.gd" id="1_gts72"]
-[ext_resource type="PackedScene" uid="uid://oows4t73rmft" path="res://TitleMenu/title.tscn" id="2_nply7"]
+[ext_resource type="Script" uid="uid://jf5014ivmjey" path="res://TitleMenu/new_discription.gd" id="1_j1spw"]
+[ext_resource type="Resource" uid="uid://bq61tios50ub" path="res://TitleMenu/discription/rangea_lightsout.tres" id="2_gts72"]
 [ext_resource type="Texture2D" uid="uid://c47mltxarecv" path="res://TitleMenu/sprites/校舎の写真.png" id="3_usmus"]
 [ext_resource type="Texture2D" uid="uid://b652ynyb2gbr8" path="res://TitleMenu/sprites/ui2-a.png" id="4_4g0rl"]
 [ext_resource type="Texture2D" uid="uid://ntqjmyhnb3c0" path="res://TitleMenu/sprites/ui1-b.png" id="5_6lh14"]
 [ext_resource type="Texture2D" uid="uid://odvoajrhkqpp" path="res://TitleMenu/sprites/ui3-b.png" id="6_bv087"]
 [ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="7_tsw0g"]
 [ext_resource type="Texture2D" uid="uid://cpn7ayruvuf41" path="res://TitleMenu/sprites/ui3-a.png" id="8_6e7ra"]
-[ext_resource type="Texture2D" uid="uid://btks2syovcprw" path="res://TitleMenu/sprites/スクリーンショット 2024-10-26 112119.png" id="9_gdx86"]
+[ext_resource type="Texture2D" uid="uid://c8gratyea5f4o" path="res://MiniGame/rangea_lightsout/assets/thumnail/スクリーンショット 2025-06-18 231433.png" id="9_gts72"]
 [ext_resource type="AudioStream" uid="uid://dep0uk4r57hh7" path="res://TitleMenu/Logic&Contradiction.ogg" id="10_tkawp"]
 
 [node name="discription" type="Control"]
@@ -18,8 +18,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_gts72")
-game_scene = ExtResource("2_nply7")
+script = ExtResource("1_j1spw")
+discription = ExtResource("2_gts72")
 
 [node name="background" type="TextureRect" parent="."]
 modulate = Color(1, 0.815686, 0.458824, 1)
@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 10
 [node name="game_name" type="Label" parent="flavortext_background/MarginContainer/gamename_background/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "ゲーム名！！！！"
+text = "つけろ!!!"
 horizontal_alignment = 1
 
 [node name="timer_background" type="NinePatchRect" parent="flavortext_background/MarginContainer"]
@@ -170,7 +170,7 @@ layout_mode = 2
 [node name="プレイ映像" type="TextureRect" parent="discription_background/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-texture = ExtResource("9_gdx86")
+texture = ExtResource("9_gts72")
 expand_mode = 1
 stretch_mode = 4
 
@@ -183,7 +183,8 @@ custom_minimum_size = Vector2(350, 262)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
-text = "操作方法をここに！！！"
+text = "ボタンを選択してAで反転
+簡単だね"
 
 [node name="VSeparator" type="VSeparator" parent="discription_background/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -195,7 +196,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
-text = "ゲーム説明をここに！！！"
+text = "ライツアウトだよ。
+選択したボタンと周囲のボタン
+が反転して
+全部点灯(水色)させたら
+クリア"
 autowrap_mode = 1
 
 [node name="start" type="Button" parent="."]
