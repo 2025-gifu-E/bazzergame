@@ -11,6 +11,10 @@ extends Node3D
 @onready var scope: Control = $"scope-image"
 @onready var wind_arrow: Control = %"windarrow-imagefile"
 @onready var label: Label = $Label
+@onready var start_countdown: Control = $CanvasLayer/start_countdown
+@onready var time: Control = $CanvasLayer/time
+@onready var gameoveroverlay: Control = $CanvasLayer/gameoveroverlay
+@onready var clearoverlay: Control = $CanvasLayer/clearoverlay
 
 var camera_sayu_sokudo:float = 90.0
 var camera_joge_sokudo:float = 90.0
@@ -21,8 +25,10 @@ var one_push:bool = bool(0)
 var power:float = 100
 var x_wind:float = 0
 var z_wind:float = 0
-var false_trap_dragoongod_professional_ultimate_super_star_string_integer_bool_amaging_strong_promax_iphone17_mac_windows_android_redstar_quatro_double_firster_fast_white_red_blue_green_electronic_tecnorogy_float_single_triple_list:bool = false
-
+var clear_y:float
+var can_move:bool = false
+var game_clear:bool = false
+var game_over:bool = false
 func _ready() -> void:
 	wind_arrow.set_pivot_offset(wind_arrow.size / 2)
 	wind_arrow.global_position = Vector2(30,30)
@@ -32,6 +38,7 @@ func _ready() -> void:
 	var mato_zahyou_x = randi_range(100,120)
 	var mato_zahyou_y = randi_range(-10,40)
 	var mato_zahyou_z = randi_range(-30,30)
+	clear_y = mato_zahyou_y - 30
 	x_wind = randi_range(-10,10)
 	z_wind = randi_range(-10,10)
 	wind_arrow.rotation = atan2(z_wind,x_wind)+(PI / 2)
@@ -40,9 +47,12 @@ func _ready() -> void:
 	mato_1.position = Vector3(mato_zahyou_x,mato_zahyou_y + 1.25,mato_zahyou_z)
 	var zettai_husoku:float = int(sqrt(x_wind**2 + z_wind**2)*10)
 	label.text = "x:" + str(x_wind) + "m,z:" + str(z_wind) + "m,STR:" + str(zettai_husoku*0.1) + "m"
+	start_countdown.start_countdown()
+	await start_countdown.game_start
+	can_move = true
 
 func _physics_process(delta: float) -> void:
-	if(false_trap_dragoongod_professional_ultimate_super_star_string_integer_bool_amaging_strong_promax_iphone17_mac_windows_android_redstar_quatro_double_firster_fast_white_red_blue_green_electronic_tecnorogy_float_single_triple_list==false):
+	if can_move ==false:
 		return
 	if one_push == bool(0):
 		tama.global_position = tama_basyo.global_position
@@ -58,13 +68,18 @@ func _physics_process(delta: float) -> void:
 		tama.rotation.y = kamera.rotation.y - deg_to_rad(-90)
 		tama.freeze = 0
 		tama_tex.show()
+		time.show()
+		time.time_start()
 		var camera_direction = -camerahontai.global_transform.basis.z.normalized()
 		tama.apply_central_impulse(camera_direction * power)
 		tama.apply_central_impulse(Vector3(x_wind,0,z_wind))
 		one_push = 1
 	
-	if mato_1.position.y < -30:
-		get_tree().quit()#clear
+	if mato_1.position.y < clear_y:
+		if game_over:
+			return
+		game_clear = true
+		clearoverlay.clear_view()
 	camera(delta)
 	#suko_cam.global_position = camera_basyo.global_position
 	#suko_cam.rotation.x = camerahontai.rotation.x
@@ -102,3 +117,12 @@ func camera(delta: float) -> void:
 	camera_joge_kakunin = clamp(camera_joge_kakunin,camera_ue_gen,camera_sita_gen)
 	camerahontai.transform.basis = Basis()
 	camerahontai.rotate_object_local(Vector3.RIGHT,deg_to_rad(camera_joge_kakunin))
+
+
+func _on_time_time_out() -> void:
+	if game_clear:
+		return
+	game_over = true
+	gameoveroverlay.gameover_view()
+	await get_tree().create_timer(5.0).timeout
+	SceneManager.change_scene("res://TitleMenu/title.tscn",{"skip_fade_out":true,"skip_fade_in":true})

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dora0alm5gq2g"]
+[gd_scene load_steps=30 format=3 uid="uid://dora0alm5gq2g"]
 
 [ext_resource type="Script" uid="uid://bwnw4wxfbgtsc" path="res://MiniGame/Takasou_UltimateSyateki/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b0xb5chn4flab" path="res://MiniGame/Takasou_UltimateSyateki/jyusin.glb" id="2_0xm2m"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://b76ymjrx0crb6" path="res://MiniGame/Takasou_UltimateSyateki/tama.glb" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bpqmw7caabai5" path="res://MiniGame/Takasou_UltimateSyateki/scope_toka.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://2nifs7spb5ew" path="res://MiniGame/Takasou_UltimateSyateki/wind_arrow_touka.png" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="7_ybtgh"]
+[ext_resource type="PackedScene" uid="uid://ctenx7q2frbp6" path="res://Template/timerui/timer_ui.tscn" id="8_tqfbn"]
+[ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="9_7urwf"]
+[ext_resource type="PackedScene" uid="uid://cckct2bpyltp4" path="res://Template/clearoverlay/clearoverlay.tscn" id="10_q4tse"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7mycd"]
 panorama = ExtResource("2_lquwl")
@@ -202,3 +206,25 @@ offset_right = 50.0
 offset_bottom = 228.0
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_7mycd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="start_countdown" parent="CanvasLayer" instance=ExtResource("7_ybtgh")]
+title_name = "撃ち落とせ!!!!"
+title_color = Color(0.0675, 0.45, 0, 1)
+after_position = Vector2(560, 0)
+
+[node name="time" parent="CanvasLayer" instance=ExtResource("8_tqfbn")]
+visible = false
+offset_left = -25.0
+offset_top = 422.0
+offset_right = 468.0
+offset_bottom = 647.0
+time_limit = 10.0
+
+[node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("9_7urwf")]
+
+[node name="clearoverlay" parent="CanvasLayer" instance=ExtResource("10_q4tse")]
+use_score = false
+
+[connection signal="time_out" from="CanvasLayer/time" to="." method="_on_time_time_out"]
