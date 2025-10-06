@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 			create_tween().tween_property(game_name,"scale",Vector2(1.5,1.5),1.5)
 			await get_tree().create_timer(1.0).timeout
 			gameselect.stop()
-			game[game_number_debug].change_scean()
+			game[game_number_debug].change_scene()
 			#SceneStorage.change_scene(game[game_number_debug].name)
 	#if Input.is_action_just_pressed("enter"):
 		#SceneStorage.change_scene("おとすな！！")
@@ -102,7 +102,7 @@ func select_game() -> void:
 	create_tween().tween_property(game_name,"scale",Vector2(1.5,1.5),1.5)
 	await get_tree().create_timer(1.0).timeout
 	gameselect.stop()
-	game[game_number].change_scean()
+	game[game_number].change_scene()
 	#SceneStorage.change_scene(game[game_number].name)
 
 
