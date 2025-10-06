@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DiscriptionData" load_steps=4 format=3 uid="uid://cyj4mb7hlspa8"]
+
+[ext_resource type="PackedScene" uid="uid://c86xnlfnx7snq" path="res://MiniGame/SORIO_Game1/Scene/Game1.tscn" id="1_6nw28"]
+[ext_resource type="Script" uid="uid://bxthvjhxeac7k" path="res://TitleMenu/scripts/discription_data.gd" id="1_ca414"]
+[ext_resource type="Texture2D" uid="uid://dyubl8g053is7" path="res://MiniGame/SORIO_Game1/Texture/jacket.png" id="2_8rrjy"]
+
+[resource]
+script = ExtResource("1_ca414")
+name = "取れ!!!!"
+screanshot = ExtResource("2_8rrjy")
+Scean = ExtResource("1_6nw28")
+how_to_oparate = "決定...クレーンが降りる"
+gema_explanation = "クレーンでモノを獲得するゲームです
+しっかりと狙いを定めましょう
+
+
+
+
+
+
+
+制作:SORIO"
+metadata/_custom_type_script = "uid://bxthvjhxeac7k"

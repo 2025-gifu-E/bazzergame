@@ -282,7 +282,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.647, -4.295)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_c6d0v")
-autoplay = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
@@ -372,7 +371,6 @@ title_color = Color(0.216667, 1, 0, 1)
 after_position = Vector2(700, 0)
 
 [node name="clearoverlay" parent="ui" instance=ExtResource("10_f14c0")]
-visible = false
 layout_mode = 1
 use_score = false
 

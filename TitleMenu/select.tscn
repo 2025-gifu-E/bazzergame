@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://wha2hb0ver01"]
+[gd_scene load_steps=16 format=3 uid="uid://wha2hb0ver01"]
 
 [ext_resource type="Script" uid="uid://eku5lcufsakt" path="res://TitleMenu/scripts/select.gd" id="1_rnt1k"]
 [ext_resource type="Texture2D" uid="uid://ca6ncsl2f5efm" path="res://MiniGame/Ariel_game1/Ariel_game1.png" id="3_0at05"]
+[ext_resource type="Script" uid="uid://beu2gwq0fryab" path="res://TitleMenu/scripts/selectrect.gd" id="3_hphtg"]
+[ext_resource type="Resource" uid="uid://bq61tios50ub" path="res://TitleMenu/discription/rangea_lightsout.tres" id="4_gh6nu"]
 [ext_resource type="Texture2D" uid="uid://dyubl8g053is7" path="res://MiniGame/SORIO_Game1/Texture/jacket.png" id="5_hphtg"]
 [ext_resource type="Texture2D" uid="uid://chwy74f5v2nbt" path="res://TitleMenu/sprites/corsor.png" id="5_ma1ct"]
 [ext_resource type="Texture2D" uid="uid://c8gratyea5f4o" path="res://MiniGame/rangea_lightsout/assets/thumnail/スクリーンショット 2025-06-18 231433.png" id="5_ubi57"]
 [ext_resource type="Texture2D" uid="uid://cvmulw6601403" path="res://MiniGame/syoma_game1/スクリーンショット 2025-06-21 125904.png" id="6_hphtg"]
+[ext_resource type="Resource" uid="uid://bgenybj1rbqn8" path="res://TitleMenu/discription/Ariel_game1.tres" id="6_u77q5"]
 [ext_resource type="Texture2D" uid="uid://bvm8k2fndd048" path="res://TitleMenu/sprites/高専.JPG" id="6_xixsc"]
 [ext_resource type="AudioStream" uid="uid://b5nhgdnfyod1d" path="res://TitleMenu/gameselect.ogg" id="7_0at05"]
+[ext_resource type="Resource" uid="uid://c712nbedq3l7t" path="res://TitleMenu/discription/syoma_game1.tres" id="8_md5us"]
+[ext_resource type="Resource" uid="uid://cyj4mb7hlspa8" path="res://TitleMenu/discription/SORIO_Game1.tres" id="10_3g6hu"]
+[ext_resource type="Texture2D" uid="uid://bfnfmj6nmonhq" path="res://MiniGame/Takasou_UltimateSyateki/スクリーンショット 2025-10-07 000456.png" id="11_6dopy"]
+[ext_resource type="Resource" uid="uid://08hmo0mby6jw" path="res://TitleMenu/discription/Takasou_UltimateSyateki.tres" id="12_3pw35"]
 
 [node name="select" type="Control"]
 layout_mode = 3
@@ -45,6 +52,9 @@ layout_mode = 2
 texture = ExtResource("5_ubi57")
 expand_mode = 1
 stretch_mode = 4
+script = ExtResource("3_hphtg")
+game_discription = ExtResource("4_gh6nu")
+metadata/_custom_type_script = "uid://beu2gwq0fryab"
 
 [node name="ゴールに入れろ!!!!" type="TextureRect" parent="MarginContainer/GameImage"]
 custom_minimum_size = Vector2(250, 139)
@@ -52,13 +62,19 @@ layout_mode = 2
 texture = ExtResource("3_0at05")
 expand_mode = 1
 stretch_mode = 4
+script = ExtResource("3_hphtg")
+game_discription = ExtResource("6_u77q5")
+metadata/_custom_type_script = "uid://beu2gwq0fryab"
 
-[node name="撃ち落とせ!!!!" type="TextureRect" parent="MarginContainer/GameImage"]
+[node name="叩き落せ!!!!" type="TextureRect" parent="MarginContainer/GameImage"]
 custom_minimum_size = Vector2(250, 139)
 layout_mode = 2
 texture = ExtResource("6_hphtg")
 expand_mode = 1
 stretch_mode = 4
+script = ExtResource("3_hphtg")
+game_discription = ExtResource("8_md5us")
+metadata/_custom_type_script = "uid://beu2gwq0fryab"
 
 [node name="取れ!!!!" type="TextureRect" parent="MarginContainer/GameImage"]
 custom_minimum_size = Vector2(250, 139)
@@ -66,6 +82,19 @@ layout_mode = 2
 texture = ExtResource("5_hphtg")
 expand_mode = 1
 stretch_mode = 4
+script = ExtResource("3_hphtg")
+game_discription = ExtResource("10_3g6hu")
+metadata/_custom_type_script = "uid://beu2gwq0fryab"
+
+[node name="撃ち落とせ!!!!" type="TextureRect" parent="MarginContainer/GameImage"]
+custom_minimum_size = Vector2(250, 139)
+layout_mode = 2
+texture = ExtResource("11_6dopy")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("3_hphtg")
+game_discription = ExtResource("12_3pw35")
+metadata/_custom_type_script = "uid://beu2gwq0fryab"
 
 [node name="GameName" type="Label" parent="."]
 custom_minimum_size = Vector2(1052, 150)

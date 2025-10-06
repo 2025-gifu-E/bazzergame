@@ -30,7 +30,6 @@ func _ready() -> void:
 	right_arm.rotation_degrees = arm_min_angle * -1
 	ufo.position = Vector2(0,-250)
 	start_countdown.start_countdown()
-	$BGM.play()
 
 func _physics_process(delta: float) -> void:
 	match GameFlow:

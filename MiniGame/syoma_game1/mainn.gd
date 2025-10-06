@@ -7,7 +7,7 @@ extends Node2D
 @onready var title = $CanvasLayer/start_countdown
 @onready var clearoverlay: Control = $CanvasLayer/clearoverlay
 
-@onready var bgm: AudioStreamPlayer = $BGM
+
 
 
 var gameover:bool = false
@@ -20,7 +20,6 @@ var outline : float =20
 
 
 func _ready() -> void:
-	bgm.play()
 	title.start_countdown()
 
 	# ゲーム開始
@@ -45,7 +44,6 @@ func _process(delta: float) -> void:
 
 func _on_time_time_out() -> void:
 	if gameclear == false and game_start:
-		_lavel2.visible = true
 		target.visible = false
 		gameover = true
 		for enemy in get_tree().get_nodes_in_group("tamas"):

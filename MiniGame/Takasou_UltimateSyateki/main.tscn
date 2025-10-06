@@ -1,0 +1,230 @@
+[gd_scene load_steps=30 format=3 uid="uid://dora0alm5gq2g"]
+
+[ext_resource type="Script" uid="uid://bwnw4wxfbgtsc" path="res://MiniGame/Takasou_UltimateSyateki/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b0xb5chn4flab" path="res://MiniGame/Takasou_UltimateSyateki/jyusin.glb" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dtup20s5rcyfd" path="res://MiniGame/Takasou_UltimateSyateki/sora2.jpg" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b76ymjrx0crb6" path="res://MiniGame/Takasou_UltimateSyateki/tama.glb" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bpqmw7caabai5" path="res://MiniGame/Takasou_UltimateSyateki/scope_toka.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://2nifs7spb5ew" path="res://MiniGame/Takasou_UltimateSyateki/wind_arrow_touka.png" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="7_ybtgh"]
+[ext_resource type="PackedScene" uid="uid://ctenx7q2frbp6" path="res://Template/timerui/timer_ui.tscn" id="8_tqfbn"]
+[ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="9_7urwf"]
+[ext_resource type="PackedScene" uid="uid://cckct2bpyltp4" path="res://Template/clearoverlay/clearoverlay.tscn" id="10_q4tse"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7mycd"]
+panorama = ExtResource("2_lquwl")
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("PanoramaSkyMaterial_7mycd")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 2
+sky = SubResource("Sky_0xm2m")
+tonemap_mode = 3
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h2yge"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+size = Vector3(0.25, 0.25, 4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h2yge"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1bvp3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7dm0k"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ig7tw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1bvp3"]
+size = Vector3(10, 0.1, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h2yge"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_h2yge")
+
+[sub_resource type="QuadMesh" id="QuadMesh_h2yge"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1bvp3")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="TorusMesh" id="TorusMesh_h2yge"]
+inner_radius = 0.2
+outer_radius = 0.3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+bg_color = Color(0, 1, 0, 0.313726)
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_ig7tw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.34202, -0.469846, 0.813797, 0, 0.866025, 0.5, -0.939692, -0.17101, 0.296198, 0, 0, 0)
+layers = 3
+light_cull_mask = 4294967294
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.707107, -0.353553, 0.612372, 0, 0, 0)
+light_cull_mask = 4294967293
+
+[node name="mato1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.75, 0)
+mass = 49.0
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mato1"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mato1/CollisionShape3D"]
+mesh = SubResource("BoxMesh_h2yge")
+skeleton = NodePath("../../..")
+
+[node name="yuka_1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="yuka_1"]
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="yuka_1/CollisionShape3D"]
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="kamera-" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="kamera-"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="kamera-/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
+mesh = SubResource("BoxMesh_0xm2m")
+
+[node name="jyusin" parent="kamera-/Camera3D" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1, 0)
+
+[node name="tama_basyo" type="Node3D" parent="kamera-/Camera3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="kamera-/Camera3D/tama_basyo"]
+visible = false
+mesh = SubResource("SphereMesh_h2yge")
+
+[node name="camera_basyo" type="Node3D" parent="kamera-/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -100)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="kamera-/Camera3D/camera_basyo"]
+visible = false
+mesh = SubResource("SphereMesh_1bvp3")
+
+[node name="tama" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.18557e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tama"]
+shape = SubResource("SphereShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="tama/CollisionShape3D"]
+visible = false
+mesh = SubResource("SphereMesh_ig7tw")
+
+[node name="tama" parent="tama" instance=ExtResource("3_h2yge")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="suko-cam" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+current = true
+fov = 20.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/suko-cam"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 90)
+visible = false
+mesh = SubResource("BoxMesh_1bvp3")
+skeleton = NodePath("../../../tama")
+
+[node name="suko-pu" type="MeshInstance3D" parent="SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 1, 8.74228e-08)
+visible = false
+mesh = SubResource("QuadMesh_h2yge")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/suko-pu"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("TorusMesh_h2yge")
+
+[node name="scope-image" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="scope-imagefile" type="TextureRect" parent="scope-image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1bvp3")
+expand_mode = 1
+
+[node name="windarrow-imagefile" type="TextureRect" parent="."]
+unique_name_in_owner = true
+offset_right = 120.0
+offset_bottom = 150.0
+texture = ExtResource("6_7mycd")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 200.0
+offset_right = 50.0
+offset_bottom = 228.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_7mycd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="start_countdown" parent="CanvasLayer" instance=ExtResource("7_ybtgh")]
+title_name = "撃ち落とせ!!!!"
+title_color = Color(0.0675, 0.45, 0, 1)
+after_position = Vector2(560, 0)
+
+[node name="time" parent="CanvasLayer" instance=ExtResource("8_tqfbn")]
+visible = false
+offset_left = -25.0
+offset_top = 422.0
+offset_right = 468.0
+offset_bottom = 647.0
+time_limit = 10.0
+
+[node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("9_7urwf")]
+
+[node name="clearoverlay" parent="CanvasLayer" instance=ExtResource("10_q4tse")]
+use_score = false
+
+[connection signal="time_out" from="CanvasLayer/time" to="." method="_on_time_time_out"]

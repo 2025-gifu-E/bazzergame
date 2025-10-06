@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DiscriptionData" load_steps=4 format=3 uid="uid://08hmo0mby6jw"]
+
+[ext_resource type="PackedScene" uid="uid://dora0alm5gq2g" path="res://MiniGame/Takasou_UltimateSyateki/main.tscn" id="1_df8nr"]
+[ext_resource type="Script" uid="uid://bxthvjhxeac7k" path="res://TitleMenu/scripts/discription_data.gd" id="1_g40h1"]
+[ext_resource type="Texture2D" uid="uid://bfnfmj6nmonhq" path="res://MiniGame/Takasou_UltimateSyateki/スクリーンショット 2025-10-07 000456.png" id="2_kk57l"]
+
+[resource]
+script = ExtResource("1_g40h1")
+name = "撃ち落とせ!!!!"
+screanshot = ExtResource("2_kk57l")
+Scean = ExtResource("1_df8nr")
+how_to_oparate = "左スティックで向き
+Yで減速
+ZLでスコープ
+ZRで発射"
+gema_explanation = "的を狙撃銃で撃ち落とせ
+風向きにも注意せよ
+しっかり当てないと落とせないぞ"
+metadata/_custom_type_script = "uid://bxthvjhxeac7k"

@@ -1,9 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://c86xnlfnx7snq"]
+[gd_scene load_steps=29 format=3 uid="uid://c86xnlfnx7snq"]
 
 [ext_resource type="Script" uid="uid://cxtwpcplg803l" path="res://MiniGame/SORIO_Game1/Scene/game_1.gd" id="1_irdhl"]
 [ext_resource type="Texture2D" uid="uid://dl1kalm5dilmi" path="res://MiniGame/SORIO_Game1/Texture/kure-nn.png" id="1_vnhsg"]
 [ext_resource type="Texture2D" uid="uid://b36coewt1vsjg" path="res://MiniGame/SORIO_Game1/Texture/bg_abstract1_blue.png" id="3_27dxc"]
-[ext_resource type="AudioStream" uid="uid://dedcm3krjf0sg" path="res://MiniGame/SORIO_Game1/Texture/kosenwaribiki_game1.ogg" id="4_yu7g2"]
 [ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="5_majgu"]
 [ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="6_0ee0e"]
 [ext_resource type="PackedScene" uid="uid://cckct2bpyltp4" path="res://Template/clearoverlay/clearoverlay.tscn" id="7_t28mm"]
@@ -239,9 +238,6 @@ grow_vertical = 2
 texture = ExtResource("3_27dxc")
 expand_mode = 1
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_yu7g2")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="start_countdown" parent="CanvasLayer" instance=ExtResource("5_majgu")]
@@ -254,7 +250,6 @@ after_outline = 10
 [node name="gameoveroverlay" parent="CanvasLayer" instance=ExtResource("6_0ee0e")]
 
 [node name="clearoverlay" parent="CanvasLayer" instance=ExtResource("7_t28mm")]
-visible = false
 use_score = false
 
 [connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]

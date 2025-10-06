@@ -7,14 +7,12 @@ var grid_buttons:Array = []            # 二次元配列 (TextureButton)
 
 @onready var grid_container = $MarginContainer/GridContainer
 @onready var start = $CanvasLayer/startoverlay
-@onready var bgm: AudioStreamPlayer = $BGM
 @onready var gameoveroverlay: Control = $CanvasLayer/gameoveroverlay
 @onready var clearoverlay: Control = $clearoverlay
 
 var ButtonScene = preload("res://MiniGame/rangea_lightsout/scean/button/button.tscn")
 var waiting_for_next_scene = false
 func _ready() -> void:
-	bgm.play()
 	grid_container.columns = GRID_SIZE
 	
 	for y in range(GRID_SIZE):

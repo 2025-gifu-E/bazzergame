@@ -25,7 +25,8 @@ func _ready() -> void:
 	cursor.modulate = "#ffffffff"
 	game = []
 	for child in game_image.get_children():
-		game.append(child)
+		if child is SelectRect:
+			game.append(child)
 	await get_tree().process_frame
 	cursor.global_position = game[0].global_position + (game[0].get_rect().size / 2) + corsor_pos_offset
 	current_game_name = game[0].name
@@ -64,7 +65,8 @@ func _process(delta: float) -> void:
 			create_tween().tween_property(game_name,"scale",Vector2(1.5,1.5),1.5)
 			await get_tree().create_timer(1.0).timeout
 			gameselect.stop()
-			SceneStorage.change_scene(game[game_number_debug].name)
+			game[game_number_debug].change_scene()
+			#SceneStorage.change_scene(game[game_number_debug].name)
 	#if Input.is_action_just_pressed("enter"):
 		#SceneStorage.change_scene("おとすな！！")
 
@@ -100,7 +102,8 @@ func select_game() -> void:
 	create_tween().tween_property(game_name,"scale",Vector2(1.5,1.5),1.5)
 	await get_tree().create_timer(1.0).timeout
 	gameselect.stop()
-	SceneStorage.change_scene(game[game_number].name)
+	game[game_number].change_scene()
+	#SceneStorage.change_scene(game[game_number].name)
 
 
 	

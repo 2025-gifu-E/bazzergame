@@ -4,7 +4,7 @@
 `CanvasLayer`ノードにこのシーンをインスタンス化して使用します。  
 スクリプトにこのシーンをCtrlボタンを押しながらドラック&ドロップをしてノード取得を行います。
 ```gdscript:main.gd
-@onready var start = $CanvasLayer/gameoveroverlay
+@onready var gameoveroverlay = $CanvasLayer/gameoveroverlay
 ```
 このようなコードが出てきます。
 そしたらゲームオーバーしたときの処理(timeoutなど)にgameover_view()関数を呼び出すとオーバレイが出てきます。あとは、
