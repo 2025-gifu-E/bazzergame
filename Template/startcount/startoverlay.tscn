@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://i3wx70stgi7i"]
+[gd_scene load_steps=3 format=3 uid="uid://i3wx70stgi7i"]
 
 [ext_resource type="Script" uid="uid://dtojlpyy2k7lb" path="res://Template/startcount/startoverlay.gd" id="1_rl5cy"]
+[ext_resource type="AudioStream" uid="uid://c8iu6rxrvnl0p" path="res://Template/clearoverlay/kosenwaribiki_game1.ogg" id="2_u8vbl"]
 
 [node name="start_countdown" type="Control"]
 layout_mode = 3
@@ -79,3 +80,6 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 64
 text = "タイトル!!!!"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u8vbl")

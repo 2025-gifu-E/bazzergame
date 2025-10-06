@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd0c126hdcyil"]
+[gd_scene load_steps=7 format=3 uid="uid://cd0c126hdcyil"]
 
 [ext_resource type="Script" uid="uid://iwanun734xis" path="res://MiniGame/rangea_lightsout/scean/lightsout_main/lightsout_main.gd" id="1_auf0j"]
 [ext_resource type="Texture2D" uid="uid://c47mltxarecv" path="res://TitleMenu/sprites/校舎の写真.png" id="2_wlfer"]
 [ext_resource type="PackedScene" uid="uid://ctenx7q2frbp6" path="res://Template/timerui/timer_ui.tscn" id="3_jei01"]
 [ext_resource type="PackedScene" uid="uid://i3wx70stgi7i" path="res://Template/startcount/startoverlay.tscn" id="4_jei01"]
-[ext_resource type="AudioStream" uid="uid://des1t3hg11413" path="res://MiniGame/rangea_lightsout/audio/kosenwaribiki_game1.ogg" id="5_0cgsq"]
 [ext_resource type="PackedScene" uid="uid://dpnxc2x7js3j1" path="res://Template/gameoveroverlay/gameoveroverlay.tscn" id="5_jei01"]
 [ext_resource type="PackedScene" uid="uid://cckct2bpyltp4" path="res://Template/clearoverlay/clearoverlay.tscn" id="6_p404l"]
 
@@ -62,9 +61,6 @@ title_name = "つけろ!!!!"
 
 [node name="clearoverlay" parent="." instance=ExtResource("6_p404l")]
 layout_mode = 1
-
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_0cgsq")
 
 [connection signal="time_out" from="time" to="." method="_on_timer_timeout"]
 [connection signal="game_start" from="CanvasLayer/startoverlay" to="." method="_on_startoverlay_game_start"]

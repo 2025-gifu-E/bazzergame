@@ -13,6 +13,7 @@ extends Control
 @export var test:bool = false
 @onready var thema_moved: Label = $Thema_moved
 @onready var start_overlay: Control = $start_overlay
+@onready var bgm: AudioStreamPlayer = $BGM
 
 var tite_size:int = 64
 var outline:int = 20
@@ -29,6 +30,7 @@ func _ready() -> void:
 	countdown_label.visible = true
 	countdown_label.text = "3"
 func start_countdown()-> void:
+	bgm.play()
 	# カウントダウンを順番に実行
 	await show_countdown("3",Color(0,1,0))
 	await show_countdown("2",Color(1,0.5,0))

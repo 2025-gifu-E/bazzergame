@@ -7,7 +7,7 @@ extends Node2D
 @onready var title = $CanvasLayer/start_countdown
 @onready var clearoverlay: Control = $CanvasLayer/clearoverlay
 
-@onready var bgm: AudioStreamPlayer = $BGM
+
 
 
 var gameover:bool = false
@@ -20,7 +20,6 @@ var outline : float =20
 
 
 func _ready() -> void:
-	bgm.play()
 	title.start_countdown()
 
 	# ゲーム開始

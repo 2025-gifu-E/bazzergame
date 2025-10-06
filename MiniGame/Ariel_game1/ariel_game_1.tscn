@@ -282,7 +282,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.647, -4.295)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_c6d0v")
-autoplay = true
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
